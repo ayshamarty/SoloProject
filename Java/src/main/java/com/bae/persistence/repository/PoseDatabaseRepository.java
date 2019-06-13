@@ -67,9 +67,8 @@ public class PoseDatabaseRepository implements PoseRepository {
 		Pose poseToChange = json.getObjectForJSON(pose, Pose.class);
 		Pose oldPose = manager.find(Pose.class, poseID);
 		if (oldPose != null) {
-			oldPose.setPoseID(poseToChange.getPoseID());
 			oldPose.setPoseName(poseToChange.getPoseName());
-
+			oldPose.setPoseDifficulty(poseToChange.getPoseDifficulty());
 			manager.persist(poseToChange);
 		}
 		return "{\"message\": \"pose successfully updated\"}";
