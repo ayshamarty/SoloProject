@@ -20,7 +20,7 @@ public class PoseMapRepository implements PoseRepository {
 		return json.getJSONForObject(poseMap);
 	}
 
-	public String getAPose(long poseID) {
+	public String getAPose(int poseID) {
 		Pose poseToGet = poseMap.get(poseID);
 		String poseString = json.getJSONForObject(poseToGet);
 		return poseString;

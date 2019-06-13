@@ -9,7 +9,7 @@ import com.bae.persistence.domain.Pose;
 import com.bae.persistence.repository.PoseMapRepository;
 import com.bae.util.JSONUtil;
 
-public class PoseTest {
+public class PoseMapTest {
 	private PoseMapRepository poseMapRepo = new PoseMapRepository();
 	private Pose pose1;
 	private Pose pose2;
@@ -47,13 +47,18 @@ public class PoseTest {
 
 	}
 
-	// @Test
-	// public void getPoseTest() {
-	// poseMapRepo.getPoseMap().put(1, pose1);
-	// poseMapRepo.getPoseMap().put(2, pose2);
-	// System.out.println(poseMapRepo.getAPose(1));
-	// assertEquals("{\"poseID\":2,\"poseName\":\"Crow\",\"poseDifficulty\":\"Difficult\"}",
-	// poseMapRepo.getAPose(2));
-	// }
+	@Test
+	public void getPoseTest() {
+		poseMapRepo.getPoseMap().put(1, pose1);
+		poseMapRepo.getPoseMap().put(2, pose2);
+		System.out.println(poseMapRepo.getAPose(1));
+		assertEquals("{\"poseID\":2,\"poseName\":\"Crow\",\"poseDifficulty\":\"Difficult\"}", poseMapRepo.getAPose(2));
+	}
+
+	@Test
+	public void getPoseEmptyMapTest() {
+		System.out.println(poseMapRepo.getAPose(1));
+		assertEquals("null", poseMapRepo.getAPose(2));
+	}
 
 }

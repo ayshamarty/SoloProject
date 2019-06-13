@@ -32,7 +32,7 @@ public class PoseDatabaseRepository implements PoseRepository {
 		return json.getJSONForObject(accounts);
 	}
 
-	public String getAPose(long poseId) {
+	public String getAPose(int poseId) {
 		return json.getJSONForObject(manager.find(Pose.class, poseId));
 	}
 
