@@ -1,7 +1,9 @@
 com\bae\business\PoseService.class
 com\bae\persistence\domain\Pose.class
 com\bae\persistence\repository\PoseDatabaseRepository.class
+come\bae\rest\PoseController.class
 com\bae\util\JSONUtil.class
 com\bae\business\PoseServiceImplementation.class
 com\bae\persistence\repository\PoseMapRepository.class
+come\bae\rest\JAXActivator.class
 com\bae\persistence\repository\PoseRepository.class

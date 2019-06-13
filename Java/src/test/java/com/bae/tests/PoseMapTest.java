@@ -14,6 +14,7 @@ public class PoseMapTest {
 	private Pose pose1;
 	private Pose pose2;
 	private JSONUtil json;
+	private String successMessage = "Pose successfuly created";
 
 	@Before
 	public void setup() {
@@ -51,20 +52,18 @@ public class PoseMapTest {
 	public void getPoseTest() {
 		poseMapRepo.getPoseMap().put(1, pose1);
 		poseMapRepo.getPoseMap().put(2, pose2);
-		System.out.println(poseMapRepo.getAPose(1));
 		assertEquals("{\"poseID\":2,\"poseName\":\"Crow\",\"poseDifficulty\":\"Difficult\"}", poseMapRepo.getAPose(2));
 	}
 
 	@Test
 	public void getPoseEmptyMapTest() {
-		System.out.println(poseMapRepo.getAPose(1));
 		assertEquals("null", poseMapRepo.getAPose(2));
 	}
 
 	@Test
 	public void createPoseTest() {
 		String poseToAdd = json.getJSONForObject(pose1);
-		assertEquals(poseMapRepo.createPose(poseToAdd), "Pose successfuly created");
+		assertEquals(poseMapRepo.createPose(poseToAdd), successMessage);
 		assertEquals(1, poseMapRepo.getPoseMap().size());
 
 	}
@@ -73,8 +72,8 @@ public class PoseMapTest {
 	public void createTwoPosesTest() {
 		String poseToAdd1 = json.getJSONForObject(pose1);
 		String poseToAdd2 = json.getJSONForObject(pose2);
-		assertEquals(poseMapRepo.createPose(poseToAdd1), "Pose successfuly created");
-		assertEquals(poseMapRepo.createPose(poseToAdd2), "Pose successfuly created");
+		assertEquals(poseMapRepo.createPose(poseToAdd1), successMessage);
+		assertEquals(poseMapRepo.createPose(poseToAdd2), successMessage);
 		assertEquals(2, poseMapRepo.getPoseMap().size());
 
 	}
@@ -110,7 +109,6 @@ public class PoseMapTest {
 	public void updatePose() {
 		poseMapRepo.getPoseMap().put(1, pose1);
 		poseMapRepo.updatePose(1, "{\"poseID\":1,\"poseDifficulty\":\"Intermediate\"}");
-		System.out.println(poseMapRepo.getPoseMap().get(1).getPoseDifficulty());
 		assertEquals("Intermediate", poseMapRepo.getPoseMap().get(1).getPoseDifficulty());
 	}
 
