@@ -58,7 +58,7 @@ public class PoseMapTest {
 	@Test
 	public void getPoseEmptyMapTest() {
 		System.out.println(poseMapRepo.getAPose(1));
-		assertEquals(null, poseMapRepo.getAPose(2));
+		assertEquals("null", poseMapRepo.getAPose(2));
 	}
 
 }
