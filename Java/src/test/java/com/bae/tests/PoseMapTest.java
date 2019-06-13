@@ -61,4 +61,57 @@ public class PoseMapTest {
 		assertEquals("null", poseMapRepo.getAPose(2));
 	}
 
+	@Test
+	public void createPoseTest() {
+		String poseToAdd = json.getJSONForObject(pose1);
+		assertEquals(poseMapRepo.createPose(poseToAdd), "Pose successfuly created");
+		assertEquals(1, poseMapRepo.getPoseMap().size());
+
+	}
+
+	@Test
+	public void createTwoPosesTest() {
+		String poseToAdd1 = json.getJSONForObject(pose1);
+		String poseToAdd2 = json.getJSONForObject(pose2);
+		assertEquals(poseMapRepo.createPose(poseToAdd1), "Pose successfuly created");
+		assertEquals(poseMapRepo.createPose(poseToAdd2), "Pose successfuly created");
+		assertEquals(2, poseMapRepo.getPoseMap().size());
+
+	}
+
+	@Test
+	public void deleteOnePoseTest() {
+
+		poseMapRepo.getPoseMap().put(1, pose1);
+		poseMapRepo.getPoseMap().put(2, pose2);
+
+		poseMapRepo.deletePose(2);
+		assertEquals(false, poseMapRepo.getPoseMap().containsKey(2));
+		assertEquals(1, poseMapRepo.getPoseMap().size());
+
+	}
+
+	@Test
+	public void deleteAllPosesTest() {
+
+		poseMapRepo.getPoseMap().put(1, pose1);
+		poseMapRepo.getPoseMap().put(2, pose2);
+
+		poseMapRepo.deletePose(1);
+		assertEquals(false, poseMapRepo.getPoseMap().containsKey(1));
+		assertEquals(true, poseMapRepo.getPoseMap().containsKey(2));
+		poseMapRepo.deletePose(2);
+		assertEquals(false, poseMapRepo.getPoseMap().containsKey(2));
+		assertEquals(0, poseMapRepo.getPoseMap().size());
+
+	}
+
+	@Test
+	public void updatePose() {
+		poseMapRepo.getPoseMap().put(1, pose1);
+		poseMapRepo.updatePose(1, "{\"poseID\":1,\"poseDifficulty\":\"Intermediate\"}");
+		System.out.println(poseMapRepo.getPoseMap().get(1).getPoseDifficulty());
+		assertEquals("Intermediate", poseMapRepo.getPoseMap().get(1).getPoseDifficulty());
+	}
+
 }
