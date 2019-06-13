@@ -35,4 +35,24 @@ public class PoseMapRepository implements PoseRepository {
 		this.poseMap = poseMap;
 	}
 
+	@Override
+	public String createPose(String pose) {
+		Pose poseToAdd = json.getObjectForJSON(pose, Pose.class);
+		poseMap.put(poseToAdd.getPoseID(), poseToAdd);
+		return "Pose successfuly created";
+	}
+
+	@Override
+	public String deletePose(int poseID) {
+		poseMap.remove(poseID);
+		return "pose successfully removed";
+
+	}
+
+	@Override
+	public String updatePose(int poseID, String pose) {
+		Pose poseToUpdate = json.getObjectForJSON(pose, Pose.class);
+		poseMap.put(poseID, poseToUpdate);
+		return "pose successfully updated";
+	}
 }
