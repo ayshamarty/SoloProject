@@ -64,15 +64,13 @@ public class PoseDatabaseRepository implements PoseRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String updatePose(int poseID, String pose) {
-		Pose poseToChange = json.getObjectForJSON(pose, Pose.class);
-		Pose oldPose = manager.find(Pose.class, poseID);
-		if (oldPose != null) {
-			oldPose.setPoseName(poseToChange.getPoseName());
-			oldPose.setPoseDifficulty(poseToChange.getPoseDifficulty());
-			manager.persist(poseToChange);
+		Pose poseToUpdate = manager.find(Pose.class, poseID);
+		Pose updatedPose = json.getObjectForJSON(pose, Pose.class);
+		if (poseToUpdate != null) {
+			poseToUpdate.setPoseName(updatedPose.getPoseName());
+			poseToUpdate.setPoseDifficulty(updatedPose.getPoseDifficulty());
+			manager.persist(poseToUpdate);
 		}
 		return "{\"message\": \"pose successfully updated\"}";
-
 	}
-
 }
