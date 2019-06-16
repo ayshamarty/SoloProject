@@ -70,7 +70,10 @@ public class PoseDatabaseRepository implements PoseRepository {
 			poseToUpdate.setPoseName(updatedPose.getPoseName());
 			poseToUpdate.setPoseDifficulty(updatedPose.getPoseDifficulty());
 			manager.persist(poseToUpdate);
+			return "{\"message\": \"pose successfully updated\"}";
+		} else {
+			return "{\"message\": \"pose does not exist\"}";
 		}
-		return "{\"message\": \"pose successfully updated\"}";
+		
 	}
 }
