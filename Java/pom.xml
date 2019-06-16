@@ -7,13 +7,17 @@
   <packaging>war</packaging>
   
   <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.jboss.bom>10.1.0.Final</version.jboss.bom>
         <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
         <version.war.plugin>3.0.0</version.war.plugin>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
+    
+
+
+
     
     	<repositories>
     <!-- Needed for JSON-B API -->
@@ -22,7 +26,7 @@
         <name>Maven Java Net Snapshots and Releases</name>
         <url>https://maven.java.net/content/groups/public/</url>
     </repository>
-</repositories>
+	</repositories>
 
     <dependencyManagement>
       <dependencies>
@@ -191,6 +195,20 @@
             name given to the generated WAR, and hence the context root) -->
         <finalName>${project.artifactId}</finalName>
         <plugins>
+        
+
+ 		<plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${version.war.plugin}</version>
