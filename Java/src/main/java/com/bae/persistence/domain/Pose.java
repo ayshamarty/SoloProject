@@ -12,6 +12,7 @@ public class Pose {
 	private int poseID;
 	private String poseName;
 	private String poseDifficulty;
+	
 
 	public Pose() {
 		super();
