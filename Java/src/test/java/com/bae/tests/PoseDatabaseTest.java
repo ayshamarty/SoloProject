@@ -53,8 +53,8 @@ public class PoseDatabaseTest {
 
 	@Test
 	public void testGetAPose() {
-		Mockito.when(manager.find(Pose.class, 2)).thenReturn(TestConstants.TESTPOSE1);
-		Assert.assertEquals(TestConstants.TESTPOSE1STR, repo.getAPose(2));
+		Mockito.when(manager.find(Pose.class, 2)).thenReturn(TestConstants.TESTPOSE2);
+		Assert.assertEquals(TestConstants.TESTPOSE2STR, repo.getAPose(2));
 	}
 
 	@Test
