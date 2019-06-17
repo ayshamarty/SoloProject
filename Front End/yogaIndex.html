@@ -20,17 +20,19 @@
             <div id="poseCards">
             </div>
             <div id="readNotification">
-                <table id="table">
+
 
             </div>
         </div>
     </form>
-
-    <tr>
-        <th>Pose ID</th>
-        <th>Pose</th>
-        <th>Difficulty</th>
-    </tr>
+    <table id="table" class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Pose</th>
+            <th>Difficulty</th>
+            <th>Delete</th>
+            <th>More Details</th>
+        </tr>
 
     </table>
     <hr>
@@ -54,43 +56,39 @@
 
 
 
-    <form onsubmit="create()">
+    <form onsubmit="create()" id="createPose">
 
         <div class="container">
             <h2>Create a new pose</h2>
 
-
-            Enter name:
-            <input id="poseName" type="text" placeholder="pose name" required>
-            Choose difficulty:
-            <select id="poseDifficulty">
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advance">Advance</option>
-            </select>
+            <label for="createPoseName"><b>Enter name: </b></label>
+            <input id="createPoseName" type="text" placeholder="pose name">
+            <label for="createPosDifficulty"><b>Enter difficulty: </b></label>
+            <input id="createPoseDifficulty" type="text" placeholder="pose difficulty">
             <input type="submit" value="Create pose"> </input>
-
-            <div>
-                <p>
-                    <span id="createNotification">
-                    </span>
-                </p>
-            </div>
+            <p id="createNotification"></p>
             <hr>
         </div>
     </form>
+
+
+
 
 
     <form onsubmit="update()">
         <div class="container">
             <h2>Update a pose</h2>
 
-            Enter name:
-            <input id="updatePoseName" type="text" placeholder="pose name" required>
-            Enter difficulty:
-            <input id="updateDifficulty" type="text" placeholder="pose difficulty" required>
             Enter ID:
-            <input id="poseIDToChange" type="number" placeholder="poseID" required>
+            <input id="poseIDToChange" type="number" placeholder="poseID">
+            <input id="updatePoseName" type="text" placeholder="pose name">
+            Enter difficulty:
+            <select id="updatePoseDifficulty">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advance">Advance</option>
+            </select>
+            Enter ID:
             <input type="submit" value="Update pose"> </input>
             <div>
                 <p>

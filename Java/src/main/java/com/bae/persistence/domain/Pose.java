@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Pose {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int poseID;
 	private String poseName;
 	private String poseDifficulty;
