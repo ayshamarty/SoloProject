@@ -198,6 +198,30 @@
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.war.plugin}</version>
+				<configuration>
+					<!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+
+			<!-- The WildFly plug-in deploys your WAR to a local WildFly container -->
+			<!-- To use, run: mvn package wildfly:deploy -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.wildfly.maven.plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+				<configuration>
+					<useSystemClassLoader>false</useSystemClassLoader>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -211,29 +235,50 @@
 				<version>3.0.0</version>
 			</plugin>
 
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${version.war.plugin}</version>
-				<configuration>
-					<!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
-			<!-- The WildFly plug-in deploys your WAR to a local WildFly container -->
-			<!-- To use, run: mvn package wildfly:deploy -->
-			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>${version.wildfly.maven.plugin}</version>
-			</plugin>
 <!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-surefire-plugin</artifactId> -->
-<!-- 				<version>2.22.1</version> -->
-<!-- 				<configuration> -->
-<!-- 					<useSystemClassLoader>false</useSystemClassLoader> -->
-<!-- 				</configuration> -->
+<!-- 				<groupId>org.jacoco</groupId> -->
+<!-- 				<artifactId>jacoco-maven-plugin</artifactId> -->
+<!-- 				<version>0.8.3</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>coverage-initialize</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>prepare-agent</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 					<execution> -->
+<!-- 						<id>coverage-report</id> -->
+<!-- 						<phase>post-integration-test</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>report</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 					<execution> -->
+<!-- 						<id>coverage-check</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>check</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<rules> -->
+<!-- 								<rule> -->
+<!-- 									<element>CLASS</element> -->
+<!-- 									<excludes> -->
+<!-- 										<exclude>com.qa.rest.JAXActivator</exclude> -->
+<!-- 									</excludes> -->
+<!-- 									<limits> -->
+<!-- 										<limit> -->
+<!-- 											<counter>LINE</counter> -->
+<!-- 											<value>COVEREDRATIO</value> -->
+<!-- 											<minimum>50%</minimum> -->
+<!-- 										</limit> -->
+<!-- 									</limits> -->
+<!-- 								</rule> -->
+<!-- 							</rules> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
 <!-- 			</plugin> -->
+
 		</plugins>
 	</build>
 </project>

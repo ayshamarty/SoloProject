@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.bae.tests.PoseMapTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.928 s - in com.bae.tests.PoseMapTest
-=======
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.299 sec
->>>>>>> 3fbae5263aa6e96dfa0e30746811779e4391e62b
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.335 s - in com.bae.tests.PoseMapTest

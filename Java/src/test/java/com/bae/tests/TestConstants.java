@@ -12,6 +12,5 @@ public class TestConstants {
 	public static final String TESTPOSE2STR = JSON.getJSONForObject(TESTPOSE2);
 	public static final String SUCCESSMESSAGE = "pose successfully created";
 	public static final String TESTPOSEUPDATESTR = "{\"poseID\":1,\"poseDifficulty\":\"Intermediate\"}";
-	
 
 }
