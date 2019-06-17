@@ -43,9 +43,9 @@ public class PoseDatabaseRepository implements PoseRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String createPose(String pose) {
-		Pose anAccount = json.getObjectForJSON(pose, Pose.class);
-		manager.persist(anAccount);
-		return "{\"message\": \"pose has been sucessfully added\"}";
+		Pose aPose = json.getObjectForJSON(pose, Pose.class);
+		manager.persist(aPose);
+		return "{\"message\": \"pose sucessfully added\"}";
 	}
 
 	// Delete
@@ -64,8 +64,11 @@ public class PoseDatabaseRepository implements PoseRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String updatePose(int poseID, String pose) {
+
 		Pose poseToUpdate = manager.find(Pose.class, poseID);
+
 		Pose updatedPose = json.getObjectForJSON(pose, Pose.class);
+
 		if (poseToUpdate != null) {
 			poseToUpdate.setPoseName(updatedPose.getPoseName());
 			poseToUpdate.setPoseDifficulty(updatedPose.getPoseDifficulty());
@@ -74,6 +77,23 @@ public class PoseDatabaseRepository implements PoseRepository {
 		} else {
 			return "{\"message\": \"pose does not exist\"}";
 		}
-		
+
 	}
+
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getJson() {
+		return json;
+	}
+
+	public void setJson(JSONUtil json) {
+		this.json = json;
+	}
+
 }
