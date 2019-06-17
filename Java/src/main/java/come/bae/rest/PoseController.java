@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 
 import com.bae.business.PoseService;
 
-@Path("controller")
+@Path("poseController")
 public class PoseController {
 	@Inject
 	PoseService service;

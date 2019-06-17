@@ -40,7 +40,7 @@ public class PoseMapRepository implements PoseRepository {
 	public String createPose(String pose) {
 		Pose poseToAdd = json.getObjectForJSON(pose, Pose.class);
 		poseMap.put(poseToAdd.getPoseID(), poseToAdd);
-		return "Pose successfuly created";
+		return "pose successfully created";
 	}
 
 	@Override
@@ -53,9 +53,9 @@ public class PoseMapRepository implements PoseRepository {
 	@Override
 	public String updatePose(int poseID, String pose) {
 		Pose poseToUpdate = json.getObjectForJSON(pose, Pose.class);
-		poseMap.put(poseID, poseToUpdate);
+		poseMap.replace(poseID, poseToUpdate);
 		return "pose successfully updated";
+		} 
 
-	}
 
 }
