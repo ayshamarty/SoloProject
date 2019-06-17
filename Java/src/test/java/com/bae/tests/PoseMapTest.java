@@ -42,6 +42,7 @@ public class PoseMapTest {
 		assertEquals(
 				"{\"1\":" + TestConstants.TESTPOSE1STR + ",\"2\":" + TestConstants.TESTPOSE2STR + "}",
 				poseMapRepo.getAllPoses());
+	}
 
 
 	@Test
@@ -71,38 +72,39 @@ public class PoseMapTest {
 
 	}
 
-//	@Test
-//	public void deleteOnePoseTest() {
-//
-//		poseMapRepo.getPoseMap().put(1, testPose1);
-//		poseMapRepo.getPoseMap().put(2, testPose2);
-//
-//		poseMapRepo.deletePose(2);
-//		assertEquals(false, poseMapRepo.getPoseMap().containsKey(2));
-//		assertEquals(1, poseMapRepo.getPoseMap().size());
-//
-//	}
-//
-//	@Test
-//	public void deleteAllPosesTest() {
-//
-//		poseMapRepo.getPoseMap().put(1, testPose1);
-//		poseMapRepo.getPoseMap().put(2, testPose2);
-//
-//		poseMapRepo.deletePose(1);
-//		assertEquals(false, poseMapRepo.getPoseMap().containsKey(1));
-//		assertEquals(true, poseMapRepo.getPoseMap().containsKey(2));
-//		poseMapRepo.deletePose(2);
-//		assertEquals(false, poseMapRepo.getPoseMap().containsKey(2));
-//		assertEquals(0, poseMapRepo.getPoseMap().size());
-//
-//	}
-//
-//	@Test
-//	public void updatePose() {
-//		poseMapRepo.getPoseMap().put(1, testPose1);
-//		poseMapRepo.updatePose(1, "{\"poseID\":1,\"poseDifficulty\":\"Intermediate\"}");
-//		assertEquals("Intermediate", poseMapRepo.getPoseMap().get(1).getPoseDifficulty());
-//	}
+	@Test
+	public void deleteOnePoseTest() {
+
+		poseMapRepo.getPoseMap().put(1, TestConstants.TESTPOSE1);
+		poseMapRepo.getPoseMap().put(2, TestConstants.TESTPOSE2);
+
+		poseMapRepo.deletePose(2);
+		assertEquals(false, poseMapRepo.getPoseMap().containsKey(2));
+		assertEquals(1, poseMapRepo.getPoseMap().size());
+
+	}
+
+	@Test
+	public void deleteAllPosesTest() {
+
+		poseMapRepo.getPoseMap().put(1, TestConstants.TESTPOSE1);
+		poseMapRepo.getPoseMap().put(2, TestConstants.TESTPOSE2);
+
+		poseMapRepo.deletePose(1);
+		assertEquals(false, poseMapRepo.getPoseMap().containsKey(1));
+		assertEquals(true, poseMapRepo.getPoseMap().containsKey(2));
+		poseMapRepo.deletePose(2);
+		assertEquals(false, poseMapRepo.getPoseMap().containsKey(2));
+		assertEquals(0, poseMapRepo.getPoseMap().size());
+
+	}
+
+	@Test
+	public void updatePose() {
+		poseMapRepo.getPoseMap().put(1, TestConstants.TESTPOSE1);
+		poseMapRepo.updatePose(1, TestConstants.TESTPOSEUPDATESTR);
+		assertEquals("Intermediate", poseMapRepo.getPoseMap().get(1).getPoseDifficulty());
+	}
+	
 
 }

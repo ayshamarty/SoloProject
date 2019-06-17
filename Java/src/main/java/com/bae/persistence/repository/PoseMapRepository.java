@@ -53,9 +53,9 @@ public class PoseMapRepository implements PoseRepository {
 	@Override
 	public String updatePose(int poseID, String pose) {
 		Pose poseToUpdate = json.getObjectForJSON(pose, Pose.class);
-		poseMap.put(poseID, poseToUpdate);
+		poseMap.replace(poseID, poseToUpdate);
 		return "pose successfully updated";
+		} 
 
-	}
 
 }
