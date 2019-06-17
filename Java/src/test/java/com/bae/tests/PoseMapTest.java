@@ -2,19 +2,13 @@ package com.bae.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import javax.json.Json;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import com.bae.persistence.domain.Pose;
 import com.bae.persistence.repository.PoseMapRepository;
-import com.bae.util.JSONUtil;
 
 public class PoseMapTest {
 	private PoseMapRepository poseMapRepo;
-	
-
 
 	@Before
 	public void setup() {
@@ -30,8 +24,7 @@ public class PoseMapTest {
 	@Test
 	public void getAllPoses1PoseTest() {
 		poseMapRepo.getPoseMap().put(1, TestConstants.TESTPOSE1);
-		assertEquals("{\"1\":" + TestConstants.TESTPOSE1STR + "}",
-				poseMapRepo.getAllPoses());
+		assertEquals("{\"1\":" + TestConstants.TESTPOSE1STR + "}", poseMapRepo.getAllPoses());
 
 	}
 
@@ -39,11 +32,9 @@ public class PoseMapTest {
 	public void getAllPoses2PosesTest() {
 		poseMapRepo.getPoseMap().put(1, TestConstants.TESTPOSE1);
 		poseMapRepo.getPoseMap().put(2, TestConstants.TESTPOSE2);
-		assertEquals(
-				"{\"1\":" + TestConstants.TESTPOSE1STR + ",\"2\":" + TestConstants.TESTPOSE2STR + "}",
+		assertEquals("{\"1\":" + TestConstants.TESTPOSE1STR + ",\"2\":" + TestConstants.TESTPOSE2STR + "}",
 				poseMapRepo.getAllPoses());
 	}
-
 
 	@Test
 	public void getPoseTest() {
@@ -105,6 +96,5 @@ public class PoseMapTest {
 		poseMapRepo.updatePose(1, TestConstants.TESTPOSEUPDATESTR);
 		assertEquals("Intermediate", poseMapRepo.getPoseMap().get(1).getPoseDifficulty());
 	}
-	
 
 }
