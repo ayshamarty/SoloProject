@@ -1,6 +1,7 @@
-package com.bae.persistence.repository;
+package com.bae.business;
 
-public interface RoutineRepository {
+public interface RoutineService {
+
 	String getAllRoutines();
 
 	String getARoutine(int routineID);
@@ -14,5 +15,4 @@ public interface RoutineRepository {
 	String addToRoutine(int routineID, String poseID);
 	
 	String removeFromRoutine(int routineID, String poseID);
-
 }

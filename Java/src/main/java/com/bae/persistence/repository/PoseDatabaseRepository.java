@@ -35,8 +35,8 @@ public class PoseDatabaseRepository implements PoseRepository {
 	}
 
 	@Override
-	public String getAPose(int poseId) {
-		return json.getJSONForObject(manager.find(Pose.class, poseId));
+	public String getAPose(int poseID) {
+		return json.getJSONForObject(manager.find(Pose.class, poseID));
 	}
 
 	// Create
