@@ -17,7 +17,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.persistence.domain.Pose;
 import com.bae.persistence.repository.PoseDatabaseRepository;
-import com.bae.tests.util.PoseDBTestConstants;
 import com.bae.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -36,38 +35,52 @@ public class PoseDatabaseTest {
 
 	private List<Pose> poses;
 
+	private Pose testPose1;
+	private String testPose1Str;
+	private Pose testPose2;
+	private String testPose2Str;
+	private String failedMessage;
+	private String testPoseUpdateStr;
+
 	@Before
 	public void setup() {
 		repo.setManager(manager);
 		json = new JSONUtil();
 		repo.setJson(json);
 		poses = new ArrayList<>();
+		testPose1 = new Pose(1, "Downward Dog", "Beginner");
+		testPose1Str = "{\"poseID\":1,\"poseName\":\"Downward Dog\",\"poseDifficulty\":\"Beginner\"}";
+		testPose2 = new Pose(2, "Crow", "Advanced");
+		testPose2Str = "{\"poseID\":2,\"poseName\":\"Crow\",\"poseDifficulty\":\"Advanced\"}";
+		failedMessage = "{\"message\": \"pose does not exist\"}";
+		testPoseUpdateStr = "{\"poseID\":1,\"poseName\":\"Downward Dog\",\"poseDifficulty\":\"Intermediate\"}";
+
 	}
 
 	@Test
 	public void testGetAllPoses() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
-		poses.add(PoseDBTestConstants.TESTPOSE2);
+		poses.add(testPose1);
 		Mockito.when(query.getResultList()).thenReturn(poses);
-		Assert.assertEquals("[" + PoseDBTestConstants.TESTPOSE2STR + "]", repo.getAllPoses());
+		Assert.assertEquals("[" + testPose1Str + "]", repo.getAllPoses());
 	}
 
 	@Test
 	public void testGetAPose() {
-		Mockito.when(manager.find(Pose.class, 2)).thenReturn(PoseDBTestConstants.TESTPOSE2);
-		Assert.assertEquals(PoseDBTestConstants.TESTPOSE2STR, repo.getAPose(2));
+		Mockito.when(manager.find(Pose.class, 2)).thenReturn(testPose2);
+		Assert.assertEquals(testPose2Str, repo.getAPose(2));
 	}
 
 	@Test
 	public void testCreatePose() {
-		String reply = repo.createPose(PoseDBTestConstants.TESTPOSE1STR);
+		String reply = repo.createPose(testPose1Str);
 		Assert.assertEquals(reply, "{\"message\": \"pose successfully added\"}");
 	}
 
 	@Test
 	public void testDeletePoseDoesNotExist() {
 		String reply = repo.deletePose(1);
-		Assert.assertEquals(reply, PoseDBTestConstants.FAILMESSAGE);
+		Assert.assertEquals(reply, failedMessage);
 	}
 
 	@Test
@@ -83,16 +96,16 @@ public class PoseDatabaseTest {
 	@Test
 	public void testUpdatePoseDoesntExist() {
 
-		String reply = repo.updatePose(1, PoseDBTestConstants.TESTPOSEUPDATESTR);
-		Assert.assertEquals(reply, PoseDBTestConstants.FAILMESSAGE);
+		String reply = repo.updatePose(1, testPoseUpdateStr);
+		Assert.assertEquals(reply, failedMessage);
 
 	}
 
 	@Test
 	public void testUpdatePoseDoesExist() {
 
-		Mockito.when(manager.find(Pose.class, 1)).thenReturn(PoseDBTestConstants.TESTPOSE1);
-		String reply = repo.updatePose(1, PoseDBTestConstants.TESTPOSEUPDATESTR);
+		Mockito.when(manager.find(Pose.class, 1)).thenReturn(testPose1);
+		String reply = repo.updatePose(1, testPoseUpdateStr);
 		Assert.assertEquals(reply, "{\"message\": \"pose successfully updated\"}");
 	}
 
