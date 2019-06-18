@@ -79,12 +79,12 @@
 
 
 
-    <form onsubmit="update()">
+    <form>
         <div class="container">
             <h2>Update a pose</h2>
 
             Enter ID:
-            <input id="poseIDToChange" type="number" placeholder="poseID">
+            <input id="poseIDToChange" type="number" placeholder="poseID" required >
             Enter Name
             <input id="updatePoseName" type="text" placeholder="pose name">
             Enter difficulty:
@@ -94,7 +94,7 @@
                 <option value="Advance">Advance</option>
             </select>
             Enter ID:
-            <input type="submit" value="Update pose"> </input>
+            <input type="submit" value="Update pose" onclick="update()"> </input>
             <div>
                 <p>
                     <span id="updateNotification">
