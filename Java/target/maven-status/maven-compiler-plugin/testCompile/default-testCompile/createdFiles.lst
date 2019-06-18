@@ -1,4 +1,3 @@
-com\bae\tests\util\PoseMapTestConstants.class
-com\bae\tests\util\PoseDBTestConstants.class
-com\bae\tests\PoseMapTest.class
 com\bae\tests\PoseDatabaseTest.class
+com\bae\tests\util\PoseMapTestConstants.class
+com\bae\tests\PoseMapTest.class

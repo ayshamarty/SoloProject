@@ -33,7 +33,8 @@ public class PoseMapTest {
 	public void getAllPoses2PosesTest() {
 		poseMapRepo.getPoseMap().put(1, PoseMapTestConstants.TESTPOSE1);
 		poseMapRepo.getPoseMap().put(2, PoseMapTestConstants.TESTPOSE2);
-		assertEquals("{\"1\":" + PoseMapTestConstants.TESTPOSE1STR + ",\"2\":" + PoseMapTestConstants.TESTPOSE2STR + "}",
+		assertEquals(
+				"{\"1\":" + PoseMapTestConstants.TESTPOSE1STR + ",\"2\":" + PoseMapTestConstants.TESTPOSE2STR + "}",
 				poseMapRepo.getAllPoses());
 	}
 
