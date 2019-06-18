@@ -19,8 +19,9 @@ public class Routine {
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private int routineID;
 		private String routineName;
+		private String routineType;
 		@OneToMany(cascade=CascadeType.PERSIST)
-		@JoinColumn(name = "Account_ID")
+		@JoinColumn(name = "RoutineID")
 		private Set<Pose> poseSet = new HashSet<>();
 		
 
@@ -56,6 +57,16 @@ public class Routine {
 
 		public void setRoutineName(String routineName) {
 			this.routineName = routineName;
+		}
+
+
+		public String getRoutineType() {
+			return routineType;
+		}
+
+
+		public void setRoutineType(String routineType) {
+			this.routineType = routineType;
 		}
 
 }

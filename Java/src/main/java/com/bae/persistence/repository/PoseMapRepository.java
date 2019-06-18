@@ -27,14 +27,7 @@ public class PoseMapRepository implements PoseRepository {
 		return json.getJSONForObject(poseToGet);
 	}
 
-	// getters and setters
-	public Map<Integer, Pose> getPoseMap() {
-		return poseMap;
-	}
 
-	public void setPoseMap(Map<Integer, Pose> poseMap) {
-		this.poseMap = poseMap;
-	}
 
 	@Override
 	public String createPose(String pose) {
@@ -56,6 +49,15 @@ public class PoseMapRepository implements PoseRepository {
 		poseMap.replace(poseID, poseToUpdate);
 		return "pose successfully updated";
 		} 
+	
+	// getters and setters
+	public Map<Integer, Pose> getPoseMap() {
+		return poseMap;
+	}
+
+	public void setPoseMap(Map<Integer, Pose> poseMap) {
+		this.poseMap = poseMap;
+	}
 
 
 }

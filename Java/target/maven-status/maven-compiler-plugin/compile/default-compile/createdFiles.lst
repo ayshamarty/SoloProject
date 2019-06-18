@@ -1,11 +1,14 @@
 com\bae\persistence\repository\PoseDatabaseRepository.class
+com\bae\business\RoutineServiceImplementation.class
 come\bae\rest\PoseController.class
 com\bae\business\PoseServiceImplementation.class
 com\bae\util\Constants.class
 come\bae\rest\JAXActivator.class
+come\bae\rest\RoutineController.class
 com\bae\business\PoseService.class
 com\bae\persistence\domain\Pose.class
 com\bae\util\JSONUtil.class
+com\bae\business\RoutineService.class
 com\bae\persistence\repository\RoutineDatabaseRepository.class
 com\bae\persistence\repository\PoseMapRepository.class
 com\bae\persistence\repository\RoutineRepository.class
