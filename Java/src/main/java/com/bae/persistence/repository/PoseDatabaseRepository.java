@@ -40,24 +40,27 @@ public class PoseDatabaseRepository implements PoseRepository {
 	}
 
 	// Create
+
 	@Override
 	@Transactional(REQUIRED)
 	public String createPose(String pose) {
-		Pose aPose = json.getObjectForJSON(pose, Pose.class);
-		manager.persist(aPose);
-		return "{\"message\": \"pose sucessfully added\"}";
+		Pose poseToAdd = json.getObjectForJSON(pose, Pose.class);
+		manager.persist(poseToAdd);
+		return "{\"message\": \"pose successfully added\"}";
 	}
+	
 
 	// Delete
 	@Override
 	@Transactional(REQUIRED)
 	public String deletePose(int poseID) {
-
 		if (manager.contains(manager.find(Pose.class, poseID))) {
-
 			manager.remove(manager.find(Pose.class, poseID));
+			return "{\"message\": \"pose successfully deleted\"}";
+		} else {
+			return "{\"message\": \"pose does not exist\"}";
 		}
-		return "{\"message\": \"pose successfully deleted\"}";
+
 	}
 
 	// Update

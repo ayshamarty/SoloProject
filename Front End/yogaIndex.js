@@ -1,15 +1,16 @@
-function makeRequest(requestType, url, whatToSend) {
+function makeRequest(requestType, url, sendBody) {
     return new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
         req.onload = () => {
             if (req.status >= 200 && req.status <= 299) {
                 resolve(req);
             } else {
-                reject(console.log("request failed"));
+                const reason = new Error("Rejected");
+                reject(reason);
             }
         };
         req.open(requestType, url);
-        req.send(whatToSend);
+        req.send(sendBody);
     });
 }
 
@@ -34,17 +35,57 @@ function removeAllChildren(id) {
 
 }
 
-//read
-function readAll() {
-    makeRequest("GET", "http://localhost:8080/Yoga/api/poseController/getAllPoses/").then((req) => {
+function addToTable(newEntry, aRow) {
+    let aPoseID = document.createElement('td');
+    aPoseID.innerHTML = newEntry.poseID;
+    let aPoseName = document.createElement('td');
+    aPoseName.innerHTML = newEntry.poseName;
+    let aPoseDifficulty = document.createElement('td');
+    aPoseDifficulty.innerHTML = newEntry.poseDifficulty;
+    let deleteButton = document.createElement('td');
+    deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.poseID})' > Delete</button >`;
 
 
-        readNotification.innerText = req.responseText;
-    });
+    aRow.appendChild(aPoseID);
+    aRow.appendChild(aPoseName);
+    aRow.appendChild(aPoseDifficulty);
+    aRow.appendChild(deleteButton);
 }
 
+//read
+
+const readAll = () => {
+    // removes any existing tables
+    const tableContainer = document.getElementById('table');
+    if (tableContainer.rows.length > 1) {
+        let tableSize = tableContainer.rows.length;
+        for (i = tableSize; i > 1; i--) {
+            tableContainer.deleteRow(i - 1);
+        }
+    }
+    makeRequest("GET", "http://localhost:8080/Yoga/api/pose/getAllPoses")
+        .then((req) => {
+            let data = JSON.parse(req.responseText);
+            console.table(data);
+            console.log(data[0].poseName);
+
+            const tableContainer = document.getElementById('table');
+            tableContainer.className = "table table-hover";
+
+            // creating table rows and adding data into the rows
+            for (let i = 0; i < data.length; i++) {
+                let aRow = document.createElement('tr')
+                tableContainer.appendChild(aRow);
+                addToTable(data[i], aRow);
+            }
+            console.table(req.responseText)
+        }).catch((error) => { console.log(error.message) });
+
+}
+
+
 function readOne(id) {
-    makeRequest("GET", `http://localhost:8080/Yoga/api/poseController/getAPose/${id}`).then((req) => {
+    makeRequest("GET", `http://localhost:8080/Yoga/api/pose/getAPose/${id}`).then((req) => {
 
         if (req.responseText && req.responseText !== "null") {
             removeAllChildren("readNotification");
@@ -60,7 +101,7 @@ function readOne(id) {
 
 //delete
 function destroy(id) {
-    makeRequest("DELETE", `http://localhost:8080/Yoga/api/poseController/deletePose/${id}`).then((req) => {
+    makeRequest("DELETE", `http://localhost:8080/Yoga/api/pose/deletePose/${id}`).then(() => {
         deleteNotification.innerText = "Pose deleted"
     });
 }
@@ -77,25 +118,22 @@ function poseMaker(pName, pDifficulty) {
 }
 
 function create() {
-    let pose = poseMaker(poseName, poseDifficulty);
-
-    makeRequest("POST", "http://localhost:8080/Yoga/api/poseController/createPose", JSON.stringify(pose)).then((req) => {
+    let pose = poseMaker(createPoseName.value, createPoseDifficulty.value);
+    makeRequest("POST", "http://localhost:8080/Yoga/api/pose/createPose", JSON.stringify(pose)).then((req) => {
         createNotification.innerText = "Pose successfully created";
-    });
+        console.log(req);
+    }).catch((error) => { console.log(error.message) });
 }
 
 function update() {
 
-    let poseToUpdate = poseMaker(updatePoseName, updateDifficulty);
+    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty);
     console.table(poseToUpdate);
 
-    makeRequest("PUT", `http://localhost:8080/Yoga/api/poseController/updatePose/${poseIDToChange.value}`, JSON.stringify(poseToUpdate)).then((req) => {
+    makeRequest("PUT", `http://localhost:8080/Yoga/api/pose/updatePose/${poseIDToChange.value}`, JSON.stringify(poseToUpdate)).then(() => {
         updateNotification.innerText = "Pose successfully updated";
-    });
+    }).catch((error) => { console.log(error.message) });
 }
 
 
-function createTable() {
-
-}
 
