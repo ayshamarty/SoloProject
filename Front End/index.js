@@ -1,3 +1,10 @@
+const poseURL = "http://http://35.228.110.11//Yoga/api/pose/"
+
+//"http://localhost:8080/Yoga/api/pose/"
+
+
+
+
 function makeRequest(requestType, url, whatToSend) {
     return new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
@@ -63,7 +70,7 @@ const readAll = () => {
             tableContainer.deleteRow(i - 1);
         }
     }
-    makeRequest("GET", "http://localhost:8080/Yoga/api/pose/getAllPoses")
+    makeRequest("GET", `${poseURL}getAllPoses`)
         .then((req) => {
             let data = JSON.parse(req.responseText);
             console.table(data);
@@ -85,7 +92,7 @@ const readAll = () => {
 
 
 function readOne(id) {
-    makeRequest("GET", `http://localhost:8080/Yoga/api/pose/getAPose/${id}`).then((req) => {
+    makeRequest("GET", `${poseURL}${id}`).then((req) => {
 
         if (req.responseText && req.responseText !== "null") {
             removeAllChildren("readNotification");
@@ -101,7 +108,7 @@ function readOne(id) {
 
 //delete
 function destroy(id) {
-    makeRequest("DELETE", `http://localhost:8080/Yoga/api/pose/deletePose/${id}`).then(() => {
+    makeRequest("DELETE", `${poseUR}L${id}`).then(() => {
         readAll();
     });
 }
@@ -119,7 +126,7 @@ function poseMaker(pName, pDifficulty) {
 
 function create() {
     let pose = poseMaker(createPoseName, createPoseDifficulty);
-    makeRequest("POST", "http://localhost:8080/Yoga/api/pose/createPose", JSON.stringify(pose)).then(() => {
+    makeRequest("POST", `${poseURL}createPose`, JSON.stringify(pose)).then(() => {
         readAll();
     }).catch((error) => { console.log(error.message) }).then(readAll());
 }
@@ -129,7 +136,7 @@ function update() {
     let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty);
     let id = poseIDToChange.value
 
-    makeRequest("PUT", `http://localhost:8080/Yoga/api/pose/updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {
+    makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {
         console.log(response);
         readAll();
     }).catch((error) => { console.log(error.message) });
