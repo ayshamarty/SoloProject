@@ -1,6 +1,4 @@
-const poseURL = "http://35.204.89.171:8888/Yoga/api/pose/"
-
-//"http://localhost:8080/Yoga/api/pose/"
+const poseURL = "http://localhost:8080/Yoga/api/pose/"; //"http://35.204.89.171:8888/Yoga/api/pose/"
 
 
 
@@ -70,7 +68,6 @@ const readAll = () => {
             tableContainer.deleteRow(i - 1);
         }
     }
-    console.log(`${poseURL}getAllPoses`)
     makeRequest("GET", `${poseURL}getAllPoses`)
         .then((req) => {
             let data = JSON.parse(req.responseText);
@@ -109,7 +106,7 @@ function readOne(id) {
 
 //delete
 function destroy(id) {
-    makeRequest("DELETE", `${poseUR}L${id}`).then(() => {
+    makeRequest("DELETE", `${poseURL}${id}`).then(() => {
         readAll();
     });
 }
