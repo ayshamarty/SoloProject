@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bae.soloproject</groupId>
@@ -203,7 +202,8 @@
 				<version>${version.war.plugin}</version>
 				<configuration>
 					<!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
-<!-- 					<failOnMissingWebXml>false</failOnMissingWebXml> -->
+					<!-- <failOnMissingWebXml>false</failOnMissingWebXml> -->
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
 
@@ -266,11 +266,11 @@
 										<exclude>com.qa.rest.JAXActivator</exclude>
 									</excludes>
 									<limits>
-<!-- 										<limit> -->
-<!-- 											<counter>LINE</counter> -->
-<!-- 											<value>COVEREDRATIO</value> -->
-<!-- 											<minimum>50%</minimum> -->
-<!-- 										</limit> -->
+										<!-- <limit> -->
+										<!-- <counter>LINE</counter> -->
+										<!-- <value>COVEREDRATIO</value> -->
+										<!-- <minimum>50%</minimum> -->
+										<!-- </limit> -->
 									</limits>
 								</rule>
 							</rules>

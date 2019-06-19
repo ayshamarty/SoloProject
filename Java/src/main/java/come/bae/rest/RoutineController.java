@@ -10,61 +10,64 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.bae.business.RoutineService;
+
 @Path("routine")
 public class RoutineController {
-	
-		@Inject
-		RoutineService service;
 
-		@Path("/getAllRoutines")
-		@GET
-		@Produces({ "application/json" })
-		public String getAllRoutines() {
-			return service.getAllRoutines();
-		}
+	@Inject
+	RoutineService service;
 
-		@Path("/getARoutine/{routineID}")
-		@GET
-		@Produces({ "application/json" })
-		public String getARoutine(@PathParam("routineID") int routineID) {
-			return service.getARoutine(routineID);
-		}
+	@Path("/getAllRoutines")
+	@GET
+	@Produces({ "application/json" })
+	public String getAllRoutines() {
+		return service.getAllRoutines();
+	}
 
-		@Path("/createRoutine")
-		@POST
-		@Produces({ "application/json" })
-		public String createRoutine(String routine) {
-			return service.createRoutine(routine);
-		}
+	@Path("/getARoutine/{routineID}")
+	@GET
+	@Produces({ "application/json" })
+	public String getARoutine(@PathParam("routineID") int routineID) {
+		return service.getARoutine(routineID);
+	}
 
-		@Path("/deleteRoutine/{routineID}")
-		@DELETE
-		@Produces({ "application/json" })
-		public String deleteRoutine(@PathParam("routineID") int routineID) {
-			return service.deleteRoutine(routineID);
-		}
+	@Path("/createRoutine")
+	@POST
+	@Produces({ "application/json" })
+	public String createRoutine(String routine) {
+		return service.createRoutine(routine);
+	}
 
-		@Path("/updateRoutine/{routineID}")
-		@PUT
-		@Produces({ "application/json" })
-		public String updateRoutine(@PathParam("routineID") int routineID, String routine) {
-			return service.updateRoutine(routineID, routine);
+	@Path("/deleteRoutine/{routineID}")
+	@DELETE
+	@Produces({ "application/json" })
+	public String deleteRoutine(@PathParam("routineID") int routineID) {
+		return service.deleteRoutine(routineID);
+	}
 
-		}
-		
-		@Path("/addToRoutine/{routineID}")
-		@PUT
-		@Produces({ "application/json" })
-		public String addToRoutine(@PathParam("routineID") int routineID, String pose) {
-			return service.addToRoutine(routineID, pose);
+	@Path("/updateRoutine/{routineID}")
+	@PUT
+	@Produces({ "application/json" })
+	public String updateRoutine(@PathParam("routineID") int routineID, String routine) {
+		return service.updateRoutine(routineID, routine);
 
-		}
-		
-		@Path("/removeFromRoutine/{routineID}")
-		@PUT
-		@Produces({ "application/json" })
-		public String removeFromRoutine(@PathParam("routineID") int routineID, String pose) {
-			return service.removeFromRoutine(routineID, pose);
+	}
 
-		}
+	// @Path("/addToRoutine/{routineID}/{poseID}")
+	// @PUT
+	// @Produces({ "application/json" })
+	// public String addToRoutine(@PathParam("routineID") int routineID,
+	// @PathParam("poseID") int pose) {
+	// return service.addToRoutine(routineID, pose);
+	//
+	// }
+	//
+	// @Path("/removeFromRoutine/{routineID}")
+	// @PUT
+	// @Produces({ "application/json" })
+	// public String removeFromRoutine(@PathParam("routineID") int routineID, int
+	// pose) {
+	// return service.removeFromRoutine(routineID, pose);
+	//
+	// }
 }

@@ -11,8 +11,8 @@ public interface RoutineService {
 	String deleteRoutine(int routineID);
 
 	String updateRoutine(int routineID, String routine);
-	
-	String addToRoutine(int routineID, String poseID);
-	
-	String removeFromRoutine(int routineID, String poseID);
+
+	// String addToRoutine(int routineID, int poseID);
+	//
+	// String removeFromRoutine(int routineID, int poseID);
 }

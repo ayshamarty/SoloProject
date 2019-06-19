@@ -12,15 +12,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import com.bae.persistence.domain.Pose;
-import com.bae.persistence.domain.Routine;
 import com.bae.persistence.domain.Routine;
 import com.bae.util.JSONUtil;
 
 @Transactional(SUPPORTS)
 @Default
 public class RoutineDatabaseRepository implements RoutineRepository {
-	
+
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 
@@ -43,10 +41,10 @@ public class RoutineDatabaseRepository implements RoutineRepository {
 	@Override
 	@Transactional(REQUIRED)
 	public String createRoutine(String routine) {
-			Routine routineToAdd = json.getObjectForJSON(routine, Routine.class);
-			manager.persist(routineToAdd);
-			return "{\"message\": \"routine successfully added\"}";
-		
+		Routine routineToAdd = json.getObjectForJSON(routine, Routine.class);
+		manager.persist(routineToAdd);
+		return "{\"message\": \"routine successfully added\"}";
+
 	}
 
 	@Override
@@ -78,21 +76,22 @@ public class RoutineDatabaseRepository implements RoutineRepository {
 		}
 
 	}
-	@Override
-	public String addToRoutine(int routineID, String poseID) {
-		Pose poseToAdd = manager.find(Pose.class, poseID);
-		Routine routineToEdit = manager.find(Routine.class, routineID);
-				routineToEdit.getPoseSet().add(poseToAdd);
-				manager.persist(routineToEdit);
-				return "{\"message\": \"pose successfully added to routine\"}";
-	}
 
-	@Override
-	public String removeFromRoutine(int routineID, String poseID) {
-		Pose poseToRemove = manager.find(Pose.class, poseID);
-		Routine routineToEdit = manager.find(Routine.class, routineID);
-				routineToEdit.getPoseSet().remove(poseToRemove);
-				manager.persist(routineToEdit);
-				return "{\"message\": \"pose successfully removed from routine\"}";
-	}
+	// @Override
+	// public String addToRoutine(int routineID, int poseID) {
+	// Pose poseToAdd = manager.find(Pose.class, poseID);
+	// Routine routineToEdit = manager.find(Routine.class, routineID);
+	// routineToEdit.getPoseSet().add(poseToAdd);
+	// manager.persist(routineToEdit);
+	// return "{\"message\": \"pose successfully added to routine\"}";
+	// }
+	//
+	// @Override
+	// public String removeFromRoutine(int routineID, int poseID) {
+	// Pose poseToRemove = manager.find(Pose.class, poseID);
+	// Routine routineToEdit = manager.find(Routine.class, routineID);
+	// routineToEdit.getPoseSet().remove(poseToRemove);
+	// manager.persist(routineToEdit);
+	// return "{\"message\": \"pose successfully removed from routine\"}";
+	// }
 }

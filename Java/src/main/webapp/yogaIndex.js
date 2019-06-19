@@ -2,7 +2,7 @@ function makeRequest(requestType, url, whatToSend) {
     return new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
         req.onload = () => {
-            if (req.status >= 200 && req.status <= 299) {
+            if (req.status === 200) {
                 resolve(req);
             } else {
                 const reason = new Error("Rejected");
@@ -102,7 +102,7 @@ function readOne(id) {
 //delete
 function destroy(id) {
     makeRequest("DELETE", `http://localhost:8080/Yoga/api/pose/deletePose/${id}`).then(() => {
-        deleteNotification.innerText = "Pose deleted"
+        readAll();
     });
 }
 
@@ -127,10 +127,12 @@ function create() {
 function update() {
 
     let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty);
-    console.log(poseToUpdate);
-    makeRequest("PUT", `http://localhost:8080/Yoga/api/pose/updatePose/${poseIDToChange.value}`, JSON.stringify(poseToUpdate)).then(() => {
+    let id = poseIDToChange.value
+
+    makeRequest("PUT", `http://localhost:8080/Yoga/api/pose/updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {
+        console.log(response);
         readAll();
-    }).catch((error) => { console.log(error.message) }).then(readAll());
+    }).catch((error) => { console.log(error.message) });
 }
 
 
