@@ -40,20 +40,7 @@
     <hr>
     <h1>Pose Manager</h1>
     <hr>
-    <form>
-        <div class="container">
-            <h2>Find a pose</h2>
-            Enter ID
-            <input id="poseToFind" type="number" placeholder="pose ID">
-            <input type="button" onclick="readOne(poseToFind.value)" value="Get pose">
-            <div id="poseCards">
-            </div>
-            <div id="readNotification">
 
-
-            </div>
-        </div>
-    </form>
     <div class="container">
         <table id="table" class="table table-striped">
             <tr>
@@ -106,10 +93,6 @@
         </div>
     </form>
 
-
-
-
-
     <form>
         <div class="container">
             <h2>Update a pose</h2>
@@ -134,6 +117,35 @@
             <hr>
         </div>
     </form>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">More Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    `<div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" id="cardTitle">Pose</h5>
+                            <p class="card-text" id="cardText"> more info </p>
+                        </div>
+                    </div>`
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

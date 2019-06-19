@@ -19,18 +19,19 @@ function makeRequest(requestType, url, whatToSend) {
     });
 }
 
-function makeCard(pose) {
-    let myCard = document.createElement("div");
-    myCard.innerHTML = `<div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">${pose.poseName} Pose</h5>
-            <p class="card-text">Difficulty: ${pose.poseDifficulty} </p>
-        </div>
-     </div>`
+// function makeCard(pose) {
+//     let myCard = document.createElement("div");
+//     myCard.innerHTML = `<div class="card" style="width: 18rem;">
+//         <div class="card-body">
+//             <h5 class="card-title">${pose.poseName} Pose</h5>
+//             <p class="card-text">Difficulty: ${pose.poseDifficulty} </p>
+//         </div>
+//      </div>`
 
-    document.getElementById("readNotification").appendChild(myCard);
+//     document.getElementById("readNotification").appendChild(myCard);
 
-}
+// }
+
 
 function removeAllChildren(id) {
     let result = document.getElementById(id);
@@ -49,13 +50,18 @@ function addToTable(newEntry, aRow) {
     aPoseDifficulty.innerHTML = newEntry.poseDifficulty;
     let deleteButton = document.createElement('td');
     deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.poseID})' > Delete</button >`;
+    let readOneButton = document.createElement('td');
+    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
 
 
     aRow.appendChild(aPoseID);
     aRow.appendChild(aPoseName);
     aRow.appendChild(aPoseDifficulty);
     aRow.appendChild(deleteButton);
+    aRow.appendChild(readOneButton);
 }
+
+
 
 //read
 
@@ -64,7 +70,7 @@ const readAll = () => {
     const tableContainer = document.getElementById('table');
     if (tableContainer.rows.length > 1) {
         let tableSize = tableContainer.rows.length;
-        for (i = tableSize; i > 1; i--) {
+        for (let i = tableSize; i > 1; i--) {
             tableContainer.deleteRow(i - 1);
         }
     }
@@ -91,14 +97,12 @@ const readAll = () => {
 
 function readOne(id) {
     makeRequest("GET", `${poseURL}getAPose/${id}`).then((req) => {
-
-        if (req.responseText && req.responseText !== "null") {
-            removeAllChildren("readNotification");
-            let aPose = JSON.parse(req.responseText);
-            makeCard(aPose)
-        } else {
-            readNotification.innerText = "Pose doesn't exist"
-        }
+        let pose = JSON.parse(req.responseText);
+        console.log(req.responseText);
+        let changeTitle = document.getElementById('modalTitle');
+        changeTitle.innerText = `${pose.poseName} Pose`;
+        let changeBody = document.getElementById('cardTitle');
+        changeBody.innerText = `Difficulty: ${pose.poseDifficulty}`;
     }).catch(() => {
         readNotification.innerText = "Invalid ID";
     });
