@@ -99,10 +99,14 @@ function readOne(id) {
     makeRequest("GET", `${poseURL}getAPose/${id}`).then((req) => {
         let pose = JSON.parse(req.responseText);
         console.log(req.responseText);
+        let logo = document.getElementById('poseIMG')
+        logo.src = `images/${pose.poseIMG}`;
         let changeTitle = document.getElementById('modalTitle');
         changeTitle.innerText = `${pose.poseName} Pose`;
         let changeBody = document.getElementById('cardTitle');
         changeBody.innerText = `Difficulty: ${pose.poseDifficulty}`;
+        let changeInfo = document.getElementById('cardText');
+        changeInfo.innerText = `${pose.poseInfo}`;
     }).catch(() => {
         readNotification.innerText = "Invalid ID";
     });
@@ -118,16 +122,18 @@ function destroy(id) {
 //create
 
 
-function poseMaker(pName, pDifficulty) {
+function poseMaker(pName, pDifficulty, pImg, pInfo) {
     const pose = {
         poseName: pName.value,
         poseDifficulty: pDifficulty.value,
+        poseIMG: pIMG.value,
+        poseInfo: pInfo.value
     };
     return pose;
 }
 
 function create() {
-    let pose = poseMaker(createPoseName, createPoseDifficulty);
+    let pose = poseMaker(createPoseName, createPoseDifficulty, createPoseIMG, createPoseInfo);
     makeRequest("POST", `${poseURL}createPose`, JSON.stringify(pose)).then(() => {
         readAll();
     }).catch((error) => { console.log(error.message) }).then(readAll());
@@ -135,7 +141,7 @@ function create() {
 
 function update() {
 
-    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty);
+    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty, updatePoseIMG, updatePoseInfo);
     let id = poseIDToChange.value
 
     makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {
