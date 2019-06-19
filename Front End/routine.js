@@ -1,4 +1,4 @@
-const poseURL = "http://localhost:8080/Yoga/api/pose/"; //"http://35.204.89.171:8888/Yoga/api/pose/"
+const routineURL = "http://localhost:8080/Yoga/api/routine/"; //"http://35.204.89.171:8888/Yoga/api/routine/"
 
 
 
@@ -19,12 +19,12 @@ function makeRequest(requestType, url, whatToSend) {
     });
 }
 
-function makeCard(pose) {
+function makeCard(routine) {
     let myCard = document.createElement("div");
     myCard.innerHTML = `<div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">${pose.poseName} Pose</h5>
-            <p class="card-text">Difficulty: ${pose.poseDifficulty} </p>
+            <h5 class="card-title">${routine.routineName} Routine</h5>
+            <p class="card-text">Type: ${routine.routineType} </p>
         </div>
      </div>`
 
@@ -41,19 +41,19 @@ function removeAllChildren(id) {
 }
 
 function addToTable(newEntry, aRow) {
-    let aPoseID = document.createElement('td');
-    aPoseID.innerHTML = newEntry.poseID;
-    let aPoseName = document.createElement('td');
-    aPoseName.innerHTML = newEntry.poseName;
-    let aPoseDifficulty = document.createElement('td');
-    aPoseDifficulty.innerHTML = newEntry.poseDifficulty;
+    let aRoutineID = document.createElement('td');
+    aRoutineID.innerHTML = newEntry.routineID;
+    let aRoutineName = document.createElement('td');
+    aRoutineName.innerHTML = newEntry.routineName;
+    let aRoutineType = document.createElement('td');
+    aRoutineType.innerHTML = newEntry.routineType;
     let deleteButton = document.createElement('td');
-    deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.poseID})' > Delete</button >`;
+    deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.routineID})' > Delete</button >`;
 
 
-    aRow.appendChild(aPoseID);
-    aRow.appendChild(aPoseName);
-    aRow.appendChild(aPoseDifficulty);
+    aRow.appendChild(aRoutineID);
+    aRow.appendChild(aRoutineName);
+    aRow.appendChild(aRoutineType);
     aRow.appendChild(deleteButton);
 }
 
@@ -68,11 +68,11 @@ const readAll = () => {
             tableContainer.deleteRow(i - 1);
         }
     }
-    makeRequest("GET", `${poseURL}getAllPoses`)
+    makeRequest("GET", `${routineURL}getAllRoutines`)
         .then((req) => {
             let data = JSON.parse(req.responseText);
             console.table(data);
-            console.table(data[0].poseName);
+            console.table(data[0].routineName);
 
             const tableContainer = document.getElementById('table');
             tableContainer.className = "table table-hover";
@@ -90,14 +90,14 @@ const readAll = () => {
 
 
 function readOne(id) {
-    makeRequest("GET", `${poseURL}getAPose/${id}`).then((req) => {
+    makeRequest("GET", `${routineURL}getARoutine/${id}`).then((req) => {
 
         if (req.responseText && req.responseText !== "null") {
             removeAllChildren("readNotification");
-            let aPose = JSON.parse(req.responseText);
-            makeCard(aPose)
+            let aRoutine = JSON.parse(req.responseText);
+            makeCard(aRoutine)
         } else {
-            readNotification.innerText = "Pose doesn't exist"
+            readNotification.innerText = "Routine doesn't exist"
         }
     }).catch(() => {
         readNotification.innerText = "Invalid ID";
@@ -106,7 +106,7 @@ function readOne(id) {
 
 //delete
 function destroy(id) {
-    makeRequest("DELETE", `${poseURL}deletePose/${id}`).then(() => {
+    makeRequest("DELETE", `${routineURL}deleteRoutine/${id}`).then(() => {
         readAll();
     });
 }
@@ -114,27 +114,27 @@ function destroy(id) {
 //create
 
 
-function poseMaker(pName, pDifficulty) {
-    const pose = {
-        poseName: pName.value,
-        poseDifficulty: pDifficulty.value,
+function routineMaker(rName, rType) {
+    const routine = {
+        routineName: rName.value,
+        routineType: rType.value,
     };
-    return pose;
+    return routine;
 }
 
 function create() {
-    let pose = poseMaker(createPoseName, createPoseDifficulty);
-    makeRequest("POST", `${poseURL}createPose`, JSON.stringify(pose)).then(() => {
+    let routine = routineMaker(createRoutineName, createRoutineType);
+    makeRequest("POST", `${routineURL}createRoutine`, JSON.stringify(routine)).then(() => {
         readAll();
     }).catch((error) => { console.log(error.message) }).then(readAll());
 }
 
 function update() {
 
-    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty);
-    let id = poseIDToChange.value
+    let routineToUpdate = routineMaker(updateRoutineName, updateRoutineType);
+    let id = routineIDToChange.value
 
-    makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {
+    makeRequest("PUT", `${routineURL}updateRoutine/${id}`, JSON.stringify(routineToUpdate)).then(response => {
         console.log(response);
         readAll();
     }).catch((error) => { console.log(error.message) });

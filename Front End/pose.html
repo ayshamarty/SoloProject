@@ -9,7 +9,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
         <a class="navbar-brand" href="#">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,10 +34,6 @@
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
     <h1>Yoga Routines for Software Developing Teens</h1>
@@ -50,7 +46,6 @@
             Enter ID
             <input id="poseToFind" type="number" placeholder="pose ID">
             <input type="button" onclick="readOne(poseToFind.value)" value="Get pose">
-            <input type="button" onclick="readAll()" value="Get all poses">
             <div id="poseCards">
             </div>
             <div id="readNotification">
@@ -59,20 +54,22 @@
             </div>
         </div>
     </form>
-    <table id="table" class="table table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Pose</th>
-            <th>Difficulty</th>
-            <th>Delete</th>
-            <th>More Details</th>
-        </tr>
+    <div class="container">
+        <table id="table" class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Pose</th>
+                <th>Difficulty</th>
+                <th>Delete</th>
+                <th>More Details</th>
+            </tr>
 
-    </table>
+        </table>
+    </div>
     <hr>
     </div>
 
-    <form>
+    <!-- <form>
         <div class="container">
             <h2>Delete a pose</h2>
             Enter ID
@@ -86,7 +83,7 @@
             </div>
             <hr>
         </div>
-    </form>
+    </form> -->
 
 
 
@@ -127,7 +124,6 @@
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advance">Advance</option>
             </select>
-            Enter ID:
             <input type="submit" value="Update pose" onclick="update()"> </input>
             <div>
                 <p>
@@ -143,6 +139,7 @@
 
 
     <script src="pose.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
