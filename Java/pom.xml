@@ -266,11 +266,11 @@
 										<exclude>com.qa.rest.JAXActivator</exclude>
 									</excludes>
 									<limits>
-										<!-- <limit> -->
-										<!-- <counter>LINE</counter> -->
-										<!-- <value>COVEREDRATIO</value> -->
-										<!-- <minimum>50%</minimum> -->
-										<!-- </limit> -->
+<!-- 										<limit> -->
+<!-- 										<counter>LINE</counter> -->
+<!-- 										<value>COVEREDRATIO</value> -->
+<!-- 										<minimum>50%</minimum> -->
+<!-- 										</limit> -->
 									</limits>
 								</rule>
 							</rules>

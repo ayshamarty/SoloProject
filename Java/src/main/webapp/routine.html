@@ -1,7 +1,5 @@
 <html>
 
-
-
 <head>
     <title>Yoga Routines for Software Developing Teens</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -10,7 +8,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
         <a class="navbar-brand" href="#">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,15 +34,119 @@
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
     <h1>Yoga Routines for Software Developing Teens</h1>
     <hr>
+    <h1>Routine Manager</h1>
+    <hr>
+    <form>
+        <div class="container">
+            <h2>Find a routine</h2>
+            Enter ID
+            <input id="routineToFind" type="number" placeholder="routine ID">
+            <input type="button" onclick="readOne(routineToFind.value)" value="Get routine">
+            <div id="routineCards">
+            </div>
+            <div id="readNotification">
+
+
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <table id="table" class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Routine</th>
+                <th>Type</th>
+                <th>Delete</th>
+                <th>More Details</th>
+            </tr>
+
+        </table>
+    </div>
+    <hr>
+    </div>
+
+    <!-- <form>
+        <div class="container">
+            <h2>Delete a routine</h2>
+            Enter ID
+            <input id="routineToDelete" type="number" placeholder="routine ID">
+            <input type="button" onclick="destroy(routineToDelete.value)" value="Delete routine">
+            <div>
+                <p>
+                    <span id="deleteNotification">
+                    </span>
+                </p>
+            </div>
+            <hr>
+        </div>
+    </form> -->
+
+
+
+    <form onsubmit="create()" id="createRoutine">
+
+        <div class="container">
+            <h2>Create a new routine</h2>
+
+            Enter Name
+            <input id="createRoutineName" type="text" placeholder="routine name">
+            Enter Type
+            <input id="createRoutineType" type="text" placeholder="routine type">
+            <input type="submit" value="Create routine"> </input>
+            <p id="createNotification"></p>
+            <hr>
+        </div>
+    </form>
+
+
+
+
+
+    <form>
+        <div class="container">
+            <h2>Update a routine</h2>
+
+            Enter ID
+            <input id="routineIDToChange" type="number" placeholder="routine ID" required>
+            Enter Name
+            <input id="updateRoutineName" type="text" placeholder="routine name">
+            Enter Type
+            <input id="updateRoutineType" type="text" placeholder="routine type">
+            <input type="submit" value="Update routine" onclick="update()"> </input>
+            <div>
+                <p>
+                    <span id="updateNotification">
+                    </span>
+                </p>
+            </div>
+            <hr>
+        </div>
+    </form>
+
+
+
+
+    <script src="routine.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
+
+
+
+
+
 
 </html>
