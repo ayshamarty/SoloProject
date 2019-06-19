@@ -70,6 +70,7 @@ const readAll = () => {
             tableContainer.deleteRow(i - 1);
         }
     }
+    console.log(`${poseURL}getAllPoses`)
     makeRequest("GET", `${poseURL}getAllPoses`)
         .then((req) => {
             let data = JSON.parse(req.responseText);
