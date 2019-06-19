@@ -1,4 +1,4 @@
-const poseURL = "http://http://35.228.110.11//Yoga/api/pose/"
+const poseURL = "http://http://35.204.89.171//Yoga/api/pose/"
 
 //"http://localhost:8080/Yoga/api/pose/"
 
