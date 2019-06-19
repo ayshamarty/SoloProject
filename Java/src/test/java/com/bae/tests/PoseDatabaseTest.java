@@ -32,9 +32,7 @@ public class PoseDatabaseTest {
 	private Query query;
 
 	private JSONUtil json;
-
 	private List<Pose> poses;
-
 	private Pose testPose1;
 	private String testPose1Str;
 	private Pose testPose2;

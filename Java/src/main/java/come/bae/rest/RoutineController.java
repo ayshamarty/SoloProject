@@ -53,6 +53,10 @@ public class RoutineController {
 
 	}
 
+	public void setService(RoutineService service) {
+		this.service = service;
+	}
+
 	// @Path("/addToRoutine/{routineID}/{poseID}")
 	// @PUT
 	// @Produces({ "application/json" })

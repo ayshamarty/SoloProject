@@ -30,7 +30,6 @@ public class PoseDatabaseRepository implements PoseRepository {
 	public String getAllPoses() {
 		Query query = manager.createQuery("Select a FROM Pose a");
 		Collection<Pose> poses = (Collection<Pose>) query.getResultList();
-
 		return json.getJSONForObject(poses);
 	}
 
@@ -40,7 +39,6 @@ public class PoseDatabaseRepository implements PoseRepository {
 	}
 
 	// Create
-
 	@Override
 	@Transactional(REQUIRED)
 	public String createPose(String pose) {
@@ -48,7 +46,6 @@ public class PoseDatabaseRepository implements PoseRepository {
 		manager.persist(poseToAdd);
 		return "{\"message\": \"pose successfully added\"}";
 	}
-	
 
 	// Delete
 	@Override

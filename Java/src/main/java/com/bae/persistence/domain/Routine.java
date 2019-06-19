@@ -21,6 +21,13 @@ public class Routine {
 		super();
 	}
 
+	public Routine(int routineID, String routineName, String routineType) {
+		super();
+		this.routineID = routineID;
+		this.routineName = routineName;
+		this.routineType = routineType;
+	}
+
 	public int getRoutineID() {
 		return routineID;
 	}

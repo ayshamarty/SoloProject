@@ -51,4 +51,9 @@ public class PoseController {
 		return service.updatePose(poseID, pose);
 
 	}
+
+	public void setService(PoseService service) {
+		this.service = service;
+	}
+
 }

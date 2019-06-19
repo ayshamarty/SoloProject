@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.enterprise.inject.Alternative;
-import javax.persistence.EntityManager;
 
 import com.bae.persistence.domain.Pose;
 import com.bae.util.JSONUtil;
@@ -13,7 +12,6 @@ import com.bae.util.JSONUtil;
 public class PoseMapRepository implements PoseRepository {
 	private Map<Integer, Pose> poseMap = new HashMap<>();
 	private JSONUtil json = new JSONUtil();
-	private EntityManager manager;
 
 	// implemented behaviours
 
@@ -26,8 +24,6 @@ public class PoseMapRepository implements PoseRepository {
 		Pose poseToGet = poseMap.get(poseID);
 		return json.getJSONForObject(poseToGet);
 	}
-
-
 
 	@Override
 	public String createPose(String pose) {
@@ -48,8 +44,8 @@ public class PoseMapRepository implements PoseRepository {
 		Pose poseToUpdate = json.getObjectForJSON(pose, Pose.class);
 		poseMap.replace(poseID, poseToUpdate);
 		return "pose successfully updated";
-		} 
-	
+	}
+
 	// getters and setters
 	public Map<Integer, Pose> getPoseMap() {
 		return poseMap;
@@ -58,6 +54,5 @@ public class PoseMapRepository implements PoseRepository {
 	public void setPoseMap(Map<Integer, Pose> poseMap) {
 		this.poseMap = poseMap;
 	}
-
 
 }

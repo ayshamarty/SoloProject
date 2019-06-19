@@ -1,7 +1,15 @@
 body {
     background-color: rgb(215, 216, 255);
-  }
+}
 
   h1 {
       text-align: center;
   }
+
+  h4{
+      text-align: center;
+  }
+
+.dropdown-menu {
+    text-align: center;
+}

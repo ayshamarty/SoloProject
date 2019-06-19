@@ -19,16 +19,41 @@ function makeRequest(requestType, url, whatToSend) {
     });
 }
 
-function makeCard(pose) {
-    let myCard = document.createElement("div");
-    myCard.innerHTML = `<div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">${pose.poseName} Pose</h5>
-            <p class="card-text">Difficulty: ${pose.poseDifficulty} </p>
-        </div>
-     </div>`
+// function makeCard(pose) {
+//     let myCard = document.createElement("div");
+//     myCard.innerHTML = `<div class="card" style="width: 18rem;">
+//         <div class="card-body">
+//             <h5 class="card-title">${pose.poseName} Pose</h5>
+//             <p class="card-text">Difficulty: ${pose.poseDifficulty} </p>
+//         </div>
+//      </div>`
 
-    document.getElementById("readNotification").appendChild(myCard);
+//     document.getElementById("readNotification").appendChild(myCard);
+
+// }
+
+function makeModal(pose) {
+    let myModal = document.createElement("div");
+    myModal.innerHTML = `<div class="modal fade" id="poseModal" tabindex="-1" role="dialog" aria-labelledby="poseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">${pose.poseName}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Difficulty: ${pose.poseDifficulty}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>`
+
+    document.getElementById("exampleModal").appendChild(myModal);
 
 }
 
@@ -49,12 +74,15 @@ function addToTable(newEntry, aRow) {
     aPoseDifficulty.innerHTML = newEntry.poseDifficulty;
     let deleteButton = document.createElement('td');
     deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.poseID})' > Delete</button >`;
+    let readOneButton = document.createElement('td');
+    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
 
 
     aRow.appendChild(aPoseID);
     aRow.appendChild(aPoseName);
     aRow.appendChild(aPoseDifficulty);
     aRow.appendChild(deleteButton);
+    aRow.appendChild(readOneButton);
 }
 
 //read
@@ -64,7 +92,7 @@ const readAll = () => {
     const tableContainer = document.getElementById('table');
     if (tableContainer.rows.length > 1) {
         let tableSize = tableContainer.rows.length;
-        for (i = tableSize; i > 1; i--) {
+        for (let i = tableSize; i > 1; i--) {
             tableContainer.deleteRow(i - 1);
         }
     }
@@ -72,7 +100,7 @@ const readAll = () => {
         .then((req) => {
             let data = JSON.parse(req.responseText);
             console.table(data);
-            console.log(data[0].poseName);
+            console.table(data[0].poseName);
 
             const tableContainer = document.getElementById('table');
             tableContainer.className = "table table-hover";
@@ -90,7 +118,7 @@ const readAll = () => {
 
 
 function readOne(id) {
-    makeRequest("GET", `${poseURL}${id}`).then((req) => {
+    makeRequest("GET", `${poseURL}getAPose/${id}`).then((req) => {
 
         if (req.responseText && req.responseText !== "null") {
             removeAllChildren("readNotification");
@@ -106,7 +134,7 @@ function readOne(id) {
 
 //delete
 function destroy(id) {
-    makeRequest("DELETE", `${poseURL}${id}`).then(() => {
+    makeRequest("DELETE", `${poseURL}deletePose/${id}`).then(() => {
         readAll();
     });
 }
@@ -140,5 +168,4 @@ function update() {
     }).catch((error) => { console.log(error.message) });
 }
 
-
-
+readAll();
