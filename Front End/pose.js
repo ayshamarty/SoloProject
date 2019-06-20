@@ -78,7 +78,6 @@ const readAll = () => {
         .then((req) => {
             let data = JSON.parse(req.responseText);
             console.table(data);
-            console.table(data[0].poseName);
 
             const tableContainer = document.getElementById('table');
             tableContainer.className = "table table-hover";
@@ -89,7 +88,6 @@ const readAll = () => {
                 tableContainer.appendChild(aRow);
                 addToTable(data[i], aRow);
             }
-            console.table(req.responseText)
         }).catch((error) => { console.log(error.message) });
 
 }
@@ -122,18 +120,18 @@ function destroy(id) {
 //create
 
 
-function poseMaker(pName, pDifficulty, pImg, pInfo) {
+function poseMaker(pName, pDifficulty, pInfo, pIMG) {
     const pose = {
         poseName: pName.value,
         poseDifficulty: pDifficulty.value,
-        poseIMG: pIMG.value,
-        poseInfo: pInfo.value
+        poseInfo: pInfo.value,
+        pIMG: pIMG.value,
     };
     return pose;
 }
 
 function create() {
-    let pose = poseMaker(createPoseName, createPoseDifficulty, createPoseIMG, createPoseInfo);
+    let pose = poseMaker(createPoseName, createPoseDifficulty, createPoseInfo, createPoseIMG);
     makeRequest("POST", `${poseURL}createPose`, JSON.stringify(pose)).then(() => {
         readAll();
     }).catch((error) => { console.log(error.message) }).then(readAll());
@@ -141,7 +139,7 @@ function create() {
 
 function update() {
 
-    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty, updatePoseIMG, updatePoseInfo);
+    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty, updatePoseInfo, updatePoseIMG);
     let id = poseIDToChange.value
 
     makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {

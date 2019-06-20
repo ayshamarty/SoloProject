@@ -19,41 +19,16 @@ function makeRequest(requestType, url, whatToSend) {
     });
 }
 
-// function makeCard(routine) {
-//     let myCard = document.createElement("div");
-//     myCard.innerHTML = `<div class="card" style="width: 18rem;">
-//         <div class="card-body">
-//             <h5 class="card-title">${routine.routineName} Routine</h5>
-//             <p class="card-text">Type: ${routine.routineType} </p>
-//         </div>
-//      </div>`
-
-//     document.getElementById("readNotification").appendChild(myCard);
-
-// }
-
-function makeModal(routine) {
-    let myModal = document.createElement("div");
-    myModal.innerHTML = `<div class="modal fade" id="routineModal" tabindex="-1" role="dialog" aria-labelledby="routineModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">${routine.routineName}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+function makeCard(routine) {
+    let myCard = document.createElement("div");
+    myCard.innerHTML = `<div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">${routine.routineName} Routine</h5>
+            <p class="card-text">Type: ${routine.routineType} </p>
         </div>
-        <div class="modal-body">
-          Type: ${routine.routineType}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>`
+     </div>`
 
-    document.getElementById("exampleModal").appendChild(myModal);
+    document.getElementById("readNotification").appendChild(myCard);
 
 }
 
@@ -74,15 +49,12 @@ function addToTable(newEntry, aRow) {
     aRoutineType.innerHTML = newEntry.routineType;
     let deleteButton = document.createElement('td');
     deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.routineID})' > Delete</button >`;
-    let readOneButton = document.createElement('td');
-    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" onclick ='readOne(${newEntry.routineID})' > More Details </button >`;
 
 
     aRow.appendChild(aRoutineID);
     aRow.appendChild(aRoutineName);
     aRow.appendChild(aRoutineType);
     aRow.appendChild(deleteButton);
-    aRow.appendChild(readOneButton);
 }
 
 //read
@@ -92,7 +64,7 @@ const readAll = () => {
     const tableContainer = document.getElementById('table');
     if (tableContainer.rows.length > 1) {
         let tableSize = tableContainer.rows.length;
-        for (let i = tableSize; i > 1; i--) {
+        for (i = tableSize; i > 1; i--) {
             tableContainer.deleteRow(i - 1);
         }
     }
@@ -142,10 +114,10 @@ function destroy(id) {
 //create
 
 
-function routineMaker(pName, pType) {
+function routineMaker(rName, rType) {
     const routine = {
-        routineName: pName.value,
-        routineType: pType.value,
+        routineName: rName.value,
+        routineType: rType.value,
     };
     return routine;
 }
