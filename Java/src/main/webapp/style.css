@@ -13,3 +13,17 @@ body {
 .dropdown-menu {
     text-align: center;
 }
+
+.modal-content{
+    align-content: center;
+    text-align: center;
+}
+
+.card{
+    margin-left: 19%
+}
+
+.modalHeader{
+    font-size: 30;
+    text-align: center;
+}

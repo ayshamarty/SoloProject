@@ -4,6 +4,6 @@ INSERT INTO POSE (poseID, poseName, poseDifficulty, poseInfo, poseIMG) VALUES (3
 INSERT INTO POSE (poseID, poseName, poseDifficulty, poseInfo, poseIMG) VALUES (4, 'Tree', 'Intermediate', 'From a standing position, one foot is rooted into the earth with the opposite heel rooted into the inner thigh with the toes pointing toward the earth. The pelvis and the chin are tucked in. The hands come together at the heart in prayer position.', 'tree_prayer_R.png')
 INSERT INTO POSE (poseID, poseName, poseDifficulty, poseInfo, poseIMG) VALUES (5, 'Warrior I', 'Intermediate', 'The hips are squared. The inner thighs are rotated toward each other. The front knee is bent in a 90-degree angle directly above the ankle. The arms extend up to the sky with the biceps by the ears. The ribcage is lifted and the pelvis tucked.', 'warrior_I_L.png')
 
-INSERT INTO POSE (routineID, routineName, routineType) VALUES (1, 'Sun Salutation', 'Warm Up')
-INSERT INTO POSE (routineID, routineName, routineType) VALUES (2, 'Moon Salutation', 'Cool Down')
+INSERT INTO ROUTINE (routineID, routineName, routineType) VALUES (1, 'Sun Salutation', 'Warm Up')
+INSERT INTO ROUTINE (routineID, routineName, routineType) VALUES (2, 'Moon Salutation', 'Cool Down')
 

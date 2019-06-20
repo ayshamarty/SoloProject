@@ -32,30 +32,6 @@ function makeRequest(requestType, url, whatToSend) {
 
 // }
 
-function makeModal(pose) {
-    let myModal = document.createElement("div");
-    myModal.innerHTML = `<div class="modal fade" id="poseModal" tabindex="-1" role="dialog" aria-labelledby="poseModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">${pose.poseName}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Difficulty: ${pose.poseDifficulty}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>`
-
-    document.getElementById("exampleModal").appendChild(myModal);
-
-}
 
 function removeAllChildren(id) {
     let result = document.getElementById(id);
@@ -75,7 +51,7 @@ function addToTable(newEntry, aRow) {
     let deleteButton = document.createElement('td');
     deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.poseID})' > Delete</button >`;
     let readOneButton = document.createElement('td');
-    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
+    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
 
 
     aRow.appendChild(aPoseID);
@@ -84,6 +60,8 @@ function addToTable(newEntry, aRow) {
     aRow.appendChild(deleteButton);
     aRow.appendChild(readOneButton);
 }
+
+
 
 //read
 
@@ -100,7 +78,6 @@ const readAll = () => {
         .then((req) => {
             let data = JSON.parse(req.responseText);
             console.table(data);
-            console.table(data[0].poseName);
 
             const tableContainer = document.getElementById('table');
             tableContainer.className = "table table-hover";
@@ -111,7 +88,6 @@ const readAll = () => {
                 tableContainer.appendChild(aRow);
                 addToTable(data[i], aRow);
             }
-            console.table(req.responseText)
         }).catch((error) => { console.log(error.message) });
 
 }
@@ -119,14 +95,16 @@ const readAll = () => {
 
 function readOne(id) {
     makeRequest("GET", `${poseURL}getAPose/${id}`).then((req) => {
-
-        if (req.responseText && req.responseText !== "null") {
-            removeAllChildren("readNotification");
-            let aPose = JSON.parse(req.responseText);
-            makeCard(aPose)
-        } else {
-            readNotification.innerText = "Pose doesn't exist"
-        }
+        let pose = JSON.parse(req.responseText);
+        console.log(req.responseText);
+        let logo = document.getElementById('poseIMG')
+        logo.src = `images/${pose.poseIMG}`;
+        let changeTitle = document.getElementById('modalTitle');
+        changeTitle.innerText = `${pose.poseName} Pose`;
+        let changeBody = document.getElementById('cardTitle');
+        changeBody.innerText = `Difficulty: ${pose.poseDifficulty}`;
+        let changeInfo = document.getElementById('cardText');
+        changeInfo.innerText = `${pose.poseInfo}`;
     }).catch(() => {
         readNotification.innerText = "Invalid ID";
     });
@@ -142,16 +120,18 @@ function destroy(id) {
 //create
 
 
-function poseMaker(pName, pDifficulty) {
+function poseMaker(pName, pDifficulty, pInfo, pIMG) {
     const pose = {
         poseName: pName.value,
         poseDifficulty: pDifficulty.value,
+        poseInfo: pInfo.value,
+        pIMG: pIMG.value,
     };
     return pose;
 }
 
 function create() {
-    let pose = poseMaker(createPoseName, createPoseDifficulty);
+    let pose = poseMaker(createPoseName, createPoseDifficulty, createPoseInfo, createPoseIMG);
     makeRequest("POST", `${poseURL}createPose`, JSON.stringify(pose)).then(() => {
         readAll();
     }).catch((error) => { console.log(error.message) }).then(readAll());
@@ -159,7 +139,7 @@ function create() {
 
 function update() {
 
-    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty);
+    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty, updatePoseInfo, updatePoseIMG);
     let id = poseIDToChange.value
 
     makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {
