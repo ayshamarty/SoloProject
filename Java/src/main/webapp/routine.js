@@ -1,4 +1,4 @@
-const routineURL = "http://35.204.89.171:8888/Yoga/api/routine/"; //"http://localhost:8080/Yoga/api/routine/"
+const routineURL = "http://35.195.95.55:8888/Yoga/api/routine/"; //"http://localhost:8080/Yoga/api/routine/"
 
 
 
@@ -27,7 +27,7 @@ function makeCard(routine) {
             <p class="card-text">Type: ${routine.routineType} </p>
         </div>
      </div>`
- add.
+
     document.getElementById("readNotification").appendChild(myCard);
 
 }
