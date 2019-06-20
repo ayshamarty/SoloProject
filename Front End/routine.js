@@ -1,7 +1,7 @@
 
 
-const routineURL = "http://35.195.95.55:8888/Yoga/api/routine/"; //"http://localhost:8080/Yoga/api/routine/"
-
+const routineURL =  "http://localhost:8080/Yoga/api/routine/"
+//"http://35.195.95.55:8888/Yoga/api/routine/";
 
 
 
@@ -51,12 +51,27 @@ function addToTable(newEntry, aRow) {
     aRoutineType.innerHTML = newEntry.routineType;
     let deleteButton = document.createElement('td');
     deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.routineID})' > Delete</button >`;
-
+    let readOneButton = document.createElement('td');
+    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
 
     aRow.appendChild(aRoutineID);
     aRow.appendChild(aRoutineName);
     aRow.appendChild(aRoutineType);
     aRow.appendChild(deleteButton);
+    aRow.appendChild(readOneButton);
+}
+
+function addModalTable(poseToAdd, aRow) {
+    let aNewID = document.createElement('td');
+    aNewID.innerHTML = poseToAdd.poseID;
+    let aNewName = document.createElement('td');
+    aNewName.innerHTML = poseToAdd.poseName
+    let aNewDifficulty = document.createElement('td');
+    aNewDifficulty.innerHTML = poseToAdd.poseDifficulty
+
+    aRow.appendChild(aNewID);
+    aRow.appendChild(aNewName);
+    aRow.appendChild(aNewDifficulty);
 }
 
 //read
@@ -93,18 +108,37 @@ const readAll = () => {
 
 function readOne(id) {
     makeRequest("GET", `${routineURL}getARoutine/${id}`).then((req) => {
-
-        if (req.responseText && req.responseText !== "null") {
-            removeAllChildren("readNotification");
-            let aRoutine = JSON.parse(req.responseText);
-            makeCard(aRoutine)
-        } else {
-            readNotification.innerText = "Routine doesn't exist"
+        let routine = JSON.parse(req.responseText);
+        table.log(req.responseText);
+        const ourTable = document.getElementById('modalTable');
+        ourTable.className = "table table-hover";
+        
+        for (let i = 0; i < routine.length; i++) {
+            let aRow = document.createElement('tr')
+            ourTable.appendChild(aRow);
+            addModalTable(data[i], aRow);
         }
+        console.table(req.responseText)
     }).catch(() => {
         readNotification.innerText = "Invalid ID";
     });
 }
+
+// makeRequest("GET", `${poseURL}getAPose/${id}`).then((req) => {
+//     let pose = JSON.parse(req.responseText);
+//     console.log(req.responseText);
+//     let logo = document.getElementById('poseIMG')
+//     logo.src = `images/${pose.poseIMG}`;
+//     let changeTitle = document.getElementById('modalTitle');
+//     changeTitle.innerText = `${pose.poseName} Pose`;
+//     let changeBody = document.getElementById('cardTitle');
+//     changeBody.innerText = `Difficulty: ${pose.poseDifficulty}`;
+//     let changeInfo = document.getElementById('cardText');
+//     changeInfo.innerText = `${pose.poseInfo}`;
+// }).catch(() => {
+//     readNotification.innerText = "Invalid ID";
+// });
+// }
 
 //delete
 function destroy(id) {
