@@ -3,7 +3,7 @@ pipeline{
         stages{
                 stage('---clean---'){
                         steps{
-				sh "cd /Java"
+				sh "cd /var/lib/jenkins/workspace/pipelineJob/Java"
 				sh "pwd"
 				sh "ls"
                                 sh "mvn clean"
