@@ -36,7 +36,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
-				sudo cp /var/lib/jenkins/workspace/YogaProject/Java/target/Yoga.war /home/ayshamarty/wildfly-10.1.0.Final/standalone/deployments/
+				sudo cp /var/lib/jenkins/workspace/YogaProject/target/Yoga.war /home/ayshamarty/wildfly-10.1.0.Final/standalone/deployments/
                         }
                 }
         }
