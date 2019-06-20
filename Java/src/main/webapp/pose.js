@@ -1,4 +1,4 @@
-const poseURL = "http://35.195.95.55/:8888/Yoga/api/pose/"; //"http://localhost:8080/Yoga/api/pose/"; 
+const poseURL = "http://35.195.95.55:8888/Yoga/api/pose/"; //"http://localhost:8080/Yoga/api/pose/"; 
 
 
 
