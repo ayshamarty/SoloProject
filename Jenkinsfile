@@ -3,6 +3,7 @@ pipeline{
         stages{
                 stage('---clean---'){
                         steps{
+				sh "cd Java"
                                 sh "mvn clean"
                         }
                 }
