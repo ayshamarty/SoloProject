@@ -3,7 +3,7 @@ pipeline{
         stages{
                 stage('---clean---'){
                         steps{
-				sh "sudo cd Java"
+				sh "cd Java"
 				sh "pwd"
 				sh "ls"
                                 sh "mvn clean"
