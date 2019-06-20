@@ -1,4 +1,4 @@
-const routineURL = "http://localhost:8080/Yoga/api/routine/"; //"http://35.204.89.171:8888/Yoga/api/routine/"
+const routineURL = "http://http://35.195.95.55/:8888/Yoga/api/pose/"; //"http://localhost:8080/Yoga/api/pose/"; 
 
 
 
