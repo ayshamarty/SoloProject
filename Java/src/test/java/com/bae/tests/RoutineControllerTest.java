@@ -10,8 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.business.RoutineService;
-
-import come.bae.rest.RoutineController;
+import com.bae.rest.RoutineController;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RoutineControllerTest {

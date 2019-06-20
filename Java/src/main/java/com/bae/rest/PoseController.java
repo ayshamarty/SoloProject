@@ -1,4 +1,4 @@
-package come.bae.rest;
+package com.bae.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;

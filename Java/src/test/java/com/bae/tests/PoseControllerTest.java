@@ -10,8 +10,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.business.PoseService;
-
-import come.bae.rest.PoseController;
+import com.bae.rest.PoseController;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PoseControllerTest {
