@@ -3,7 +3,7 @@ pipeline{
         stages{
                 stage('---clean---'){
                         steps{
-				sh "pwd"
+				sh "ls"
                                 sh "mvn clean"
                         }
                 }
