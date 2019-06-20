@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.bae.persistence.domain.Pose;
 import com.bae.persistence.domain.Routine;
 import com.bae.util.JSONUtil;
 
@@ -96,22 +97,27 @@ public class RoutineDatabaseRepository implements RoutineRepository {
 		this.json = json;
 	}
 
-	// @Override
-	// public String addToRoutine(int routineID, int poseID) {
-	// Routine poseToAdd = manager.find(Pose.class, poseID);
-	// Routine routineToEdit = manager.find(Routine.class, routineID);
-	// routineToEdit.getRoutineSet().add(poseToAdd);
-	// manager.persist(routineToEdit);
-	// return "{\"message\": \"pose successfully added to routine\"}";
-	// }
-	//
-	// @Override
-	// public String removeFromRoutine(int routineID, int poseID) {
-	// Routine poseToRemove = manager.find(Pose.class, poseID);
-	// Routine routineToEdit = manager.find(Routine.class, routineID);
-	// routineToEdit.getRoutineSet().remove(poseToRemove);
-	// manager.persist(routineToEdit);
-	// return "{\"message\": \"pose successfully removed from routine\"}";
-	// }
+	@Override
+	@Transactional(REQUIRED)
+	public String addToRoutine(int routineID, int poseID) {
+		Pose poseToAdd = manager.find(Pose.class, poseID);
+		Routine routineToPopulate = manager.find(Routine.class, routineID);
+		routineToPopulate.getPoseSet().add(poseToAdd);
+		manager.persist(routineToPopulate);
+		return "{\"message\": \"pose successfully added to routine\"}";
+	}
+
+	@Override
+	@Transactional(REQUIRED)
+	public String removeFromRoutine(int routineID, int poseID) {
+		Routine routineToDepopulate = manager.find(Routine.class, routineID);
+		for (Pose pose : routineToDepopulate.getPoseSet()) {
+			if (pose.getPoseID() == poseID) {
+				routineToDepopulate.getPoseSet().remove(pose);
+				break;
+			}
+		}
+		return "{\"message\": \"pose successfully removed from routine\"}";
+	}
 
 }

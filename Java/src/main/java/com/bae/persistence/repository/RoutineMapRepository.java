@@ -46,15 +46,15 @@ public class RoutineMapRepository implements RoutineRepository {
 		return Constants.SUCCESSMESSAGE;
 	}
 
-	// public String addToRoutine(int routineID, int poseID) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-	//
-	// public String removeFromRoutine(int routineID, int poseID) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
+	public String addToRoutine(int routineID, int poseID) {
+
+		return null;
+	}
+
+	public String removeFromRoutine(int routineID, int poseID) {
+
+		return null;
+	}
 
 	// getters and setters
 	public Map<Integer, Routine> getRoutineMap() {

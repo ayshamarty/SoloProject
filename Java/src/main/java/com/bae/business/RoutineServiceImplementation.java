@@ -34,14 +34,14 @@ public class RoutineServiceImplementation implements RoutineService {
 		return routineRepo.updateRoutine(routineID, routine);
 	}
 
-	// @Override
-	// public String addToRoutine(int routineID, int poseID) {
-	// return routineRepo.addToRoutine(routineID, poseID);
-	// }
-	//
-	// @Override
-	// public String removeFromRoutine(int routineID, int poseID) {
-	// return routineRepo.removeFromRoutine(routineID, poseID);
-	// }
+	@Override
+	public String addToRoutine(int routineID, int poseID) {
+		return routineRepo.addToRoutine(routineID, poseID);
+	}
+
+	@Override
+	public String removeFromRoutine(int routineID, int poseID) {
+		return routineRepo.removeFromRoutine(routineID, poseID);
+	}
 
 }

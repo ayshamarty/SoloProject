@@ -1,9 +1,16 @@
 package com.bae.persistence.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Routine {
@@ -13,9 +20,10 @@ public class Routine {
 	private int routineID;
 	private String routineName;
 	private String routineType;
-	// @OneToMany(cascade=CascadeType.PERSIST)
-	// @JoinColumn(name = "RoutineID")
-	// private Set<Pose> poseSet = new HashSet<>();
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "routine_poses", joinColumns = @JoinColumn(name = "routine_id"), inverseJoinColumns = @JoinColumn(name = "pose_id"))
+	private Set<Pose> poseSet = new HashSet<>();
 
 	public Routine() {
 		super();
@@ -36,13 +44,13 @@ public class Routine {
 		this.routineID = routineID;
 	}
 
-	// public Set<Pose> getPoseSet() {
-	// return poseSet;
-	// }
-	//
-	// public void setPoseSet(Set<Pose> poseSet) {
-	// this.poseSet = poseSet;
-	// }
+	public Set<Pose> getPoseSet() {
+		return poseSet;
+	}
+
+	public void setPoseSet(Set<Pose> poseSet) {
+		this.poseSet = poseSet;
+	}
 
 	public String getRoutineName() {
 		return routineName;

@@ -7,3 +7,6 @@ INSERT INTO POSE (poseID, poseName, poseDifficulty, poseInfo, poseIMG) VALUES (5
 INSERT INTO ROUTINE (routineID, routineName, routineType) VALUES (1, 'Sun Salutation', 'Warm Up')
 INSERT INTO ROUTINE (routineID, routineName, routineType) VALUES (2, 'Moon Salutation', 'Cool Down')
 
+INSERT INTO ROUTINE_POSES (ROUTINE_ID, POSE_ID) VALUES(1,1)
+INSERT INTO ROUTINE_POSES (ROUTINE_ID, POSE_ID) VALUES(1,2)
+INSERT INTO ROUTINE_POSES (ROUTINE_ID, POSE_ID) VALUES(2,1)
