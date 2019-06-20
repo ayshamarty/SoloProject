@@ -57,21 +57,19 @@ public class RoutineController {
 		this.service = service;
 	}
 
-	// @Path("/addToRoutine/{routineID}/{poseID}")
-	// @PUT
-	// @Produces({ "application/json" })
-	// public String addToRoutine(@PathParam("routineID") int routineID,
-	// @PathParam("poseID") int pose) {
-	// return service.addToRoutine(routineID, pose);
-	//
-	// }
-	//
-	// @Path("/removeFromRoutine/{routineID}")
-	// @PUT
-	// @Produces({ "application/json" })
-	// public String removeFromRoutine(@PathParam("routineID") int routineID, int
-	// pose) {
-	// return service.removeFromRoutine(routineID, pose);
-	//
-	// }
+	@Path("/addToRoutine/{routineID}/{poseID}")
+	@POST
+	@Produces({ "application/json" })
+	public String addToRoutine(@PathParam("routineID") int routineID, @PathParam("poseID") int poseID) {
+		return service.addToRoutine(routineID, poseID);
+
+	}
+
+	@Path("/removeFromRoutine/{routineID}/{poseID}")
+	@DELETE
+	@Produces({ "application/json" })
+	public String removeFromRoutine(@PathParam("routineID") int routineID, @PathParam("poseID") int poseID) {
+		return service.removeFromRoutine(routineID, poseID);
+
+	}
 }

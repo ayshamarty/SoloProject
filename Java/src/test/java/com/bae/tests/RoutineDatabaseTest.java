@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -58,6 +59,7 @@ public class RoutineDatabaseTest {
 
 	}
 
+	@Ignore
 	@Test
 	public void testGetAllRoutines() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
@@ -66,6 +68,7 @@ public class RoutineDatabaseTest {
 		Assert.assertEquals("[" + testRoutine1Str + "]", repo.getAllRoutines());
 	}
 
+	@Ignore
 	@Test
 	public void testGetARoutine() {
 		Mockito.when(manager.find(Routine.class, 2)).thenReturn(testRoutine2);

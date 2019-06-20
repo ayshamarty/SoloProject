@@ -11,8 +11,8 @@ public interface RoutineRepository {
 
 	String updateRoutine(int routineID, String routine);
 
-	// String addToRoutine(int routineID, int poseID);
-	//
-	// String removeFromRoutine(int routineID, int poseID);
+	String addToRoutine(int routineID, int poseID);
+
+	String removeFromRoutine(int routineID, int poseID);
 
 }
