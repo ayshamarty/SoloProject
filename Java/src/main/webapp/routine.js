@@ -27,7 +27,7 @@ function makeCard(routine) {
             <p class="card-text">Type: ${routine.routineType} </p>
         </div>
      </div>`
-
+ add.
     document.getElementById("readNotification").appendChild(myCard);
 
 }
