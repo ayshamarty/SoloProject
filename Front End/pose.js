@@ -1,5 +1,5 @@
-const poseURL = "http://35.195.95.55:8888/Yoga/api/pose/"; //"http://localhost:8080/Yoga/api/pose/"; 
-
+const poseURL = "http://localhost:8080/Yoga/api/pose/";
+//"http://35.195.95.55:8888/Yoga/api/pose/";
 
 
 
@@ -18,20 +18,6 @@ function makeRequest(requestType, url, whatToSend) {
         req.send(whatToSend);
     });
 }
-
-// function makeCard(pose) {
-//     let myCard = document.createElement("div");
-//     myCard.innerHTML = `<div class="card" style="width: 18rem;">
-//         <div class="card-body">
-//             <h5 class="card-title">${pose.poseName} Pose</h5>
-//             <p class="card-text">Difficulty: ${pose.poseDifficulty} </p>
-//         </div>
-//      </div>`
-
-//     document.getElementById("readNotification").appendChild(myCard);
-
-// }
-
 
 function removeAllChildren(id) {
     let result = document.getElementById(id);
@@ -53,7 +39,6 @@ function addToTable(newEntry, aRow) {
     let readOneButton = document.createElement('td');
     readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
 
-
     aRow.appendChild(aPoseID);
     aRow.appendChild(aPoseName);
     aRow.appendChild(aPoseDifficulty);
@@ -64,7 +49,6 @@ function addToTable(newEntry, aRow) {
 
 
 //read
-
 const readAll = () => {
     // removes any existing tables
     const tableContainer = document.getElementById('table');
@@ -92,7 +76,7 @@ const readAll = () => {
 
 }
 
-
+//pop up modal with more details
 function readOne(id) {
     makeRequest("GET", `${poseURL}getAPose/${id}`).then((req) => {
         let pose = JSON.parse(req.responseText);
@@ -118,8 +102,6 @@ function destroy(id) {
 }
 
 //create
-
-
 function poseMaker(pName, pDifficulty, pInfo, pIMG) {
     const pose = {
         poseName: pName.value,
@@ -146,6 +128,10 @@ function update() {
         console.log(response);
         readAll();
     }).catch((error) => { console.log(error.message) });
+}
+
+function addToRoutine () {
+    
 }
 
 readAll();
