@@ -4,7 +4,7 @@
     <title>Yoga Routines for Software Developing Teens</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -69,22 +69,20 @@
     <hr>
     </div>
 
-    <form onsubmit="create()" id="createRoutine">
-
+    <form>
         <div class="container">
             <h2>Create a new routine</h2>
-
             Enter Name
             <input id="createRoutineName" type="text" placeholder="routine name">
             Enter Type
             <input id="createRoutineType" type="text" placeholder="routine type">
-            <input type="submit" value="Create routine"> </input>
+            <input type="button" onclick="create()" value="Create routine"> </input>
             <p id="createNotification"></p>
             <hr>
         </div>
     </form>
 
-    <form>
+    <form onsubmit="update()">
         <div class="container">
             <h2>Update a routine</h2>
 
@@ -94,7 +92,7 @@
             <input id="updateRoutineName" type="text" placeholder="routine name">
             Enter Type
             <input id="updateRoutineType" type="text" placeholder="routine type">
-            <input type="submit" value="Update routine" onclick="update()"> </input>
+            <input type="submit" value="Update routine"> </input>
             <div>
                 <p>
                     <span id="updateNotification">
@@ -138,9 +136,8 @@
         </div>
     </div>
 
-
-    <script src="routine.js"></script>
-
+    <script src="scripts/constants.js"></script>
+    <script src="scripts/routine.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

@@ -1,4 +1,4 @@
-package com.bae.tests;
+package com.bae.tests.rest;
 
 import org.junit.Assert;
 import org.junit.Before;

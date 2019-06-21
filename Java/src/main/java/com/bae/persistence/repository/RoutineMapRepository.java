@@ -47,12 +47,10 @@ public class RoutineMapRepository implements RoutineRepository {
 	}
 
 	public String addToRoutine(int routineID, int poseID) {
-
 		return null;
 	}
 
 	public String removeFromRoutine(int routineID, int poseID) {
-
 		return null;
 	}
 

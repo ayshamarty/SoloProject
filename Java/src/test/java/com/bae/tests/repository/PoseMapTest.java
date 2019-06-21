@@ -1,4 +1,4 @@
-package com.bae.tests;
+package com.bae.tests.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,8 +24,8 @@ public class PoseMapTest {
 
 	@Test
 	public void getAllPoses1PoseTest() {
-		poseMapRepo.getPoseMap().put(1, PoseMapTestConstants.TESTPOSE1);
-		assertEquals("{\"1\":" + PoseMapTestConstants.TESTPOSE1STR + "}", poseMapRepo.getAllPoses());
+		poseMapRepo.getPoseMap().put(1, PoseMapTestConstants.TESTPOSELONG);
+		assertEquals(PoseMapTestConstants.TESTPOSELONGSTR, poseMapRepo.getAllPoses());
 
 	}
 

@@ -1,4 +1,4 @@
-package com.bae.tests;
+package com.bae.tests.repository;
 
 import java.util.ArrayList;
 import java.util.List;

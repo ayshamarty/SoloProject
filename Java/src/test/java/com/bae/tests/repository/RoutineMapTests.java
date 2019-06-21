@@ -1,4 +1,4 @@
-package com.bae.tests;
+package com.bae.tests.repository;
 
 import static org.junit.Assert.assertEquals;
 
@@ -97,10 +97,20 @@ public class RoutineMapTests {
 	}
 
 	@Test
-	public void updateRoutine() {
+	public void updateRoutinetest() {
 		routineMapRepo.getRoutineMap().put(1, RoutineMapTestConstants.TESTROUTINE1);
 		routineMapRepo.updateRoutine(1, RoutineMapTestConstants.TESTROUTINEUPDATESTR);
 		assertEquals("Wind Down", routineMapRepo.getRoutineMap().get(1).getRoutineType());
+	}
+
+	@Test
+	public void addToRoutineTest() {
+		assertEquals(null, routineMapRepo.addToRoutine(1, 1));
+	}
+
+	@Test
+	public void removeFromRoutineTest() {
+		assertEquals(null, routineMapRepo.removeFromRoutine(1, 1));
 	}
 
 }

@@ -14,27 +14,11 @@ public class Pose {
 	private String poseDifficulty;
 	private String poseInfo;
 	private String poseIMG;
-	
 
 	public Pose() {
 		super();
 	}
 
-	public Pose(int poseID, String poseName, String poseDifficulty) {
-		super();
-		this.poseID = poseID;
-		this.poseName = poseName;
-		this.poseDifficulty = poseDifficulty;
-	}
-	
-	public Pose(int poseID, String poseName, String poseDifficulty, String poseInfo) {
-		super();
-		this.poseID = poseID;
-		this.poseName = poseName;
-		this.poseDifficulty = poseDifficulty;
-		this.poseInfo = poseInfo;
-	}
-	
 	public Pose(int poseID, String poseName, String poseDifficulty, String poseInfo, String poseIMG) {
 		super();
 		this.poseID = poseID;
@@ -42,6 +26,13 @@ public class Pose {
 		this.poseDifficulty = poseDifficulty;
 		this.poseInfo = poseInfo;
 		this.poseIMG = poseIMG;
+	}
+
+	public Pose(int poseID, String poseName, String poseDifficulty) {
+		super();
+		this.poseID = poseID;
+		this.poseName = poseName;
+		this.poseDifficulty = poseDifficulty;
 	}
 
 	// getters and setters
@@ -75,6 +66,14 @@ public class Pose {
 
 	public void setPoseInfo(String poseInfo) {
 		this.poseInfo = poseInfo;
+	}
+
+	public String getPoseIMG() {
+		return poseIMG;
+	}
+
+	public void setPoseIMG(String poseIMG) {
+		this.poseIMG = poseIMG;
 	}
 
 }

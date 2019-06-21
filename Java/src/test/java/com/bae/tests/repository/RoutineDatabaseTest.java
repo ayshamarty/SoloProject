@@ -1,4 +1,4 @@
-package com.bae.tests;
+package com.bae.tests.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -51,24 +50,22 @@ public class RoutineDatabaseTest {
 		repo.setJson(json);
 		routines = new ArrayList<>();
 		testRoutine1 = new Routine(1, "Sun Salutation", "Warm Up");
-		testRoutine1Str = "{\"routineID\":1,\"routineName\":\"Sun Salutation\",\"routineType\":\"Warm Up\"}";
+		testRoutine1Str = "[{\"routineID\":1,\"routineName\":\"Sun Salutation\",\"routineType\":\"Warm Up\",\"poseSet\":[]}]";
 		testRoutine2 = new Routine(2, "Moon Salutation", "Cool Down");
-		testRoutine2Str = "{\"routineID\":2,\"routineName\":\"Moon Salutation\",\"routineType\":\"Cool Down\"}";
+		testRoutine2Str = "{\"routineID\":2,\"routineName\":\"Moon Salutation\",\"routineType\":\"Cool Down\",\"poseSet\":[]}";
 		failedMessage = "{\"message\": \"routine does not exist\"}";
 		testRoutineUpdateStr = "{\"routineID\":1,\"routineName\":\"Moon Salutation\",\"routineType\":\"Wind Down\"}";
 
 	}
 
-	@Ignore
 	@Test
 	public void testGetAllRoutines() {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		routines.add(testRoutine1);
 		Mockito.when(query.getResultList()).thenReturn(routines);
-		Assert.assertEquals("[" + testRoutine1Str + "]", repo.getAllRoutines());
+		Assert.assertEquals(testRoutine1Str, repo.getAllRoutines());
 	}
 
-	@Ignore
 	@Test
 	public void testGetARoutine() {
 		Mockito.when(manager.find(Routine.class, 2)).thenReturn(testRoutine2);
@@ -77,7 +74,7 @@ public class RoutineDatabaseTest {
 
 	@Test
 	public void testCreateRoutine() {
-		String reply = repo.createRoutine(testRoutine1Str);
+		String reply = repo.createRoutine(testRoutineUpdateStr);
 		Assert.assertEquals(reply, "{\"message\": \"routine successfully added\"}");
 	}
 
@@ -111,6 +108,20 @@ public class RoutineDatabaseTest {
 		Mockito.when(manager.find(Routine.class, 1)).thenReturn(testRoutine1);
 		String reply = repo.updateRoutine(1, testRoutineUpdateStr);
 		Assert.assertEquals(reply, "{\"message\": \"routine successfully updated\"}");
+	}
+
+	@Test
+	public void testAddToRoutine() {
+		Mockito.when(manager.find(Routine.class, 1)).thenReturn(testRoutine1);
+		String reply = repo.addToRoutine(1, 1);
+		Assert.assertEquals(reply, "{\"message\": \"pose successfully added to routine\"}");
+	}
+
+	@Test
+	public void testDeleteFromRoutine() {
+		Mockito.when(manager.find(Routine.class, 1)).thenReturn(testRoutine1);
+		String reply = repo.removeFromRoutine(1, 1);
+		Assert.assertEquals(reply, "{\"message\": \"pose successfully removed from routine\"}");
 	}
 
 }
