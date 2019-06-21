@@ -35,7 +35,7 @@ pipeline{
                 }
 		stage('--surefire--'){
                         steps{
-                                sh "mvn surefire-report:report -f /var/lib/jenkins/workspace/pipelineJob/Java"
+                                sh "mvn surefire-report:report -f /var/lib/jenkins/workspace/pipelineAssessment/Java"
 				sh "mvn site -f /var/lib/jenkins/workspace/pipelineAssessment/Java"
                         }
                 }
