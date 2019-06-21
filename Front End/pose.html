@@ -104,6 +104,23 @@
         </div>
     </form>
 
+    <form>
+        <div class="container">
+            <h2>Add to routine</h2>
+
+            <input id="poseToAdd" type="number" placeholder="pose ID" required>
+            <input id="routineToAdd" type="number" placeholder="routine ID" required>
+            <input type="submit" value="add" onclick="addToRoutine()"> </input>
+            <div>
+                <p>
+                    <span id="updateNotification">
+                    </span>
+                </p>
+            </div>
+            <hr>
+        </div>
+    </form>
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

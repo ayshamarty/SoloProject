@@ -1,4 +1,4 @@
-const poseURL =  "http://localhost:8080/Yoga/api/pose/"; 
+const poseURL = "http://localhost:8080/Yoga/api/pose/";
 //"http://35.195.95.55:8888/Yoga/api/pose/";
 
 
@@ -128,6 +128,10 @@ function update() {
         console.log(response);
         readAll();
     }).catch((error) => { console.log(error.message) });
+}
+
+function addToRoutine () {
+    
 }
 
 readAll();
