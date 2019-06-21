@@ -1,5 +1,3 @@
-
-
 const routineURL = "http://localhost:8080/Yoga/api/routine/"
 //"http://35.195.95.55:8888/Yoga/api/routine/";
 
