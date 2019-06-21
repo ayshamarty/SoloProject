@@ -30,11 +30,6 @@ pipeline{
                                 sh "mvn test -f /var/lib/jenkins/workspace/${JOB_NAME}/Java"
                         }
                 }
-                stage('--package--'){
-                        steps{
-                                sh "mvn package -f /var/lib/jenkins/workspace/${JOB_NAME}/Java"
-                        }
-                }
 		stage('--sonar--'){
                         steps{
                                 sh "mvn sonar:sonar -f /var/lib/jenkins/workspace/${JOB_NAME}/Java"
@@ -49,13 +44,6 @@ pipeline{
                         steps{
                                 sh "mvn surefire-report:report -f /var/lib/jenkins/workspace/${JOB_NAME}/Java"
 				sh "mvn site -f /var/lib/jenkins/workspace/${JOB_NAME}/Java"
-                        }
-                }
-		stage('--deploy--'){
-                        steps{
-                                sh "cd /"
-				sh "pwd"
-				sh "sudo cp /var/lib/jenkins/workspace/${JOB_NAME}/Java/target/Yoga.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
                 stage('--email--'){
