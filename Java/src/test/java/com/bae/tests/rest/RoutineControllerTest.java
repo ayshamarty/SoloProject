@@ -1,4 +1,4 @@
-package com.bae.tests;
+package com.bae.tests.rest;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,7 +28,6 @@ public class RoutineControllerTest {
 	@Before
 	public void setup() {
 		controller.setService(service);
-		mockValue = "testValue";
 	}
 
 	@Test
@@ -49,6 +48,17 @@ public class RoutineControllerTest {
 		Mockito.when(service.deleteRoutine(1)).thenReturn(mockValue);
 		Assert.assertEquals(mockValue, controller.deleteRoutine(1));
 		Mockito.verify(service).deleteRoutine(1);
+	}
+
+	@Test
+	public void testGetARoutine() {
+		Mockito.when(service.getARoutine(1)).thenReturn(mockValue);
+		Assert.assertEquals(mockValue, controller.getARoutine(1));
+	}
+
+	public void testUpdateRoutine() {
+		Mockito.when(service.getARoutine(1)).thenReturn(mockValue);
+		Assert.assertEquals(mockValue, controller.updateRoutine(1, mockValue2));
 	}
 
 }

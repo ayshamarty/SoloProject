@@ -9,5 +9,7 @@ public class PoseMapTestConstants {
 	public static final String TESTPOSE2STR = "{\"poseID\":2,\"poseName\":\"Crow\",\"poseDifficulty\":\"Advanced\"}";
 	public static final String SUCCESSMESSAGE = "pose successfully created";
 	public static final String TESTPOSEUPDATESTR = "{\"poseID\":1,\"poseName\":\"Downward Dog\",\"poseDifficulty\":\"Intermediate\"}";
+	public static final Pose TESTPOSELONG = new Pose(2, "Crow", "Advanced", "info", "image");
+	public static final String TESTPOSELONGSTR = "{\"1\":{\"poseID\":2,\"poseName\":\"Crow\",\"poseDifficulty\":\"Advanced\",\"poseInfo\":\"info\",\"poseIMG\":\"image\"}}";
 
 }

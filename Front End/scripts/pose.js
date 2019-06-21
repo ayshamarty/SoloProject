@@ -1,7 +1,3 @@
-const poseURL = "http://localhost:8080/Yoga/api/pose/";
-//"http://35.195.95.55:8888/Yoga/api/pose/";
-
-
 
 function makeRequest(requestType, url, whatToSend) {
     return new Promise((resolve, reject) => {
@@ -37,7 +33,7 @@ function addToTable(newEntry, aRow) {
     let deleteButton = document.createElement('td');
     deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.poseID})' > Delete</button >`;
     let readOneButton = document.createElement('td');
-    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
+    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
 
     aRow.appendChild(aPoseID);
     aRow.appendChild(aPoseName);
@@ -82,7 +78,7 @@ function readOne(id) {
         let pose = JSON.parse(req.responseText);
         console.log(req.responseText);
         let logo = document.getElementById('poseIMG')
-        logo.src = `images/${pose.poseIMG}`;
+        logo.src = pose.poseIMG;
         let changeTitle = document.getElementById('modalTitle');
         changeTitle.innerText = `${pose.poseName} Pose`;
         let changeBody = document.getElementById('cardTitle');
@@ -115,23 +111,21 @@ function poseMaker(pName, pDifficulty, pInfo, pIMG) {
 function create() {
     let pose = poseMaker(createPoseName, createPoseDifficulty, createPoseInfo, createPoseIMG);
     makeRequest("POST", `${poseURL}createPose`, JSON.stringify(pose)).then(() => {
-        readAll();
     }).catch((error) => { console.log(error.message) }).then(readAll());
 }
 
 function update() {
-
-    let poseToUpdate = poseMaker(updatePoseName, updatePoseDifficulty, updatePoseInfo, updatePoseIMG);
+    let pose = poseMaker(updatePoseName, updatePoseDifficulty, updatePoseInfo, updatePoseIMG);
     let id = poseIDToChange.value
+    makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(pose)).then(() => {
+    }).catch((error) => { console.log(error.message) }).then(() => readAll());
+}
 
-    makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(poseToUpdate)).then(response => {
-        console.log(response);
+function addToRoutine () {
+    makeRequest("POST", `${routineURL}addToRoutine/${routineToAdd.value}/${poseToAdd.value}`).then(() => {
         readAll();
     }).catch((error) => { console.log(error.message) });
 }
 
-function addToRoutine () {
-    
-}
 
 readAll();

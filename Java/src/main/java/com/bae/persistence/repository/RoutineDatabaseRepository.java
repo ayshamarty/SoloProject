@@ -80,23 +80,6 @@ public class RoutineDatabaseRepository implements RoutineRepository {
 
 	}
 
-	// Getters and setters
-	public EntityManager getManager() {
-		return manager;
-	}
-
-	public void setManager(EntityManager manager) {
-		this.manager = manager;
-	}
-
-	public JSONUtil getJson() {
-		return json;
-	}
-
-	public void setJson(JSONUtil json) {
-		this.json = json;
-	}
-
 	@Override
 	@Transactional(REQUIRED)
 	public String addToRoutine(int routineID, int poseID) {
@@ -118,6 +101,23 @@ public class RoutineDatabaseRepository implements RoutineRepository {
 			}
 		}
 		return "{\"message\": \"pose successfully removed from routine\"}";
+	}
+
+	// Getters and setters
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
+	}
+
+	public JSONUtil getJson() {
+		return json;
+	}
+
+	public void setJson(JSONUtil json) {
+		this.json = json;
 	}
 
 }

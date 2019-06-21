@@ -1,10 +1,4 @@
 
-
-const routineURL = "http://localhost:8080/Yoga/api/routine/"
-//"http://35.195.95.55:8888/Yoga/api/routine/";
-
-
-
 function makeRequest(requestType, url, whatToSend) {
     return new Promise((resolve, reject) => {
         let req = new XMLHttpRequest();
@@ -52,7 +46,7 @@ function addToTable(newEntry, aRow) {
     let deleteButton = document.createElement('td');
     deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.routineID})' > Delete</button >`;
     let readOneButton = document.createElement('td');
-    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick='showRoutine(${newEntry.routineID})' > More Details </button >`;
+    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" onclick='showRoutine(${newEntry.routineID})' > More Details </button >`;
 
     aRow.appendChild(aRoutineID);
     aRow.appendChild(aRoutineName);
@@ -62,12 +56,13 @@ function addToTable(newEntry, aRow) {
 }
 
 function addModalTable(poseToAdd, poseRow) {
+    console.log(poseToAdd)
     let aNewID = document.createElement('td');
-    aNewID.innerHTML = poseToAdd.poseSet.poseID;
+    aNewID.innerHTML = poseToAdd.poseID;
     let aNewName = document.createElement('td');
-    aNewName.innerHTML = poseToAdd.poseSet.poseName
+    aNewName.innerHTML = poseToAdd.poseName
     let aNewDifficulty = document.createElement('td');
-    aNewDifficulty.innerHTML = poseToAdd.poseSet.poseDifficulty
+    aNewDifficulty.innerHTML = poseToAdd.poseDifficulty
     console.log(poseToAdd)
 
     poseRow.appendChild(aNewID);
@@ -98,6 +93,7 @@ const readAll = () => {
             for (let i = 0; i < data.length; i++) {
                 let aRow = document.createElement('tr')
                 tableContainer.appendChild(aRow);
+                console.log(data[i]);
                 addToTable(data[i], aRow);
             }
             console.table(req.responseText)
@@ -107,6 +103,22 @@ const readAll = () => {
 
 
 function showRoutine(id) {
+    // removes any existing tables
+
+
+    const modalContainer = document.getElementById('routineTable');
+    console.log(modalContainer);
+
+
+    if (modalContainer.rows.length > 1) {
+        console.log(modalContainer);
+        console.log(modalContainer.rows);
+        console.log(modalContainer.rows.length);
+        let tableSize = modalContainer.rows.length;
+        for (let i = tableSize; i > 1; i--) {
+            modalContainer.deleteRow(i - 1);
+        }
+    }
     makeRequest("GET", `${routineURL}getARoutine/${id}`).then((req) => {
         let routine = JSON.parse(req.responseText);
         console.table(routine);
@@ -164,12 +176,11 @@ function routineMaker(rName, rType) {
 function create() {
     let routine = routineMaker(createRoutineName, createRoutineType);
     makeRequest("POST", `${routineURL}createRoutine`, JSON.stringify(routine)).then(() => {
-        readAll();
+        console.table(JSON.stringify(routine));
     }).catch((error) => { console.log(error.message) }).then(readAll());
 }
 
 function update() {
-
     let routineToUpdate = routineMaker(updateRoutineName, updateRoutineType);
     let id = routineIDToChange.value
 
@@ -178,5 +189,7 @@ function update() {
         readAll();
     }).catch((error) => { console.log(error.message) });
 }
+
+
 
 readAll();

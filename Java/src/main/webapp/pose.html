@@ -4,7 +4,7 @@
     <title>Yoga Routines for Software Developing Teens</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -56,14 +56,9 @@
     <hr>
     </div>
 
-
-
-
     <form onsubmit="create()" id="createPose">
-
         <div class="container">
             <h2>Create a new pose</h2>
-
             <input id="createPoseName" type="text" placeholder="pose name">
             Choose Difficulty:
             <select id="createPoseDifficulty">
@@ -71,8 +66,8 @@
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advance">Advance</option>
             </select>
-            <input id="createPoseIMG" type="text" placeholder="image file">
             <input id="createPoseInfo" type="text" placeholder="add information">
+            <input id="createPoseIMG" type="text" placeholder="image file">
             <input type="submit" value="Create pose"> </input>
             <p id="createNotification"></p>
             <hr>
@@ -91,9 +86,9 @@
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advance">Advance</option>
             </select>
-            <input id="updatePoseIMG" type="text" placeholder="image file">
             <input id="updatePoseInfo" type="text" placeholder="add information">
-            <input type="submit" value="Update pose" onclick="update()"> </input>
+            <input id="updatePoseIMG" type="text" placeholder="image file">
+            <input type="button" onclick="update()" value="Update pose"> </input>
             <div>
                 <p>
                     <span id="updateNotification">
@@ -110,7 +105,7 @@
 
             <input id="poseToAdd" type="number" placeholder="pose ID" required>
             <input id="routineToAdd" type="number" placeholder="routine ID" required>
-            <input type="submit" value="add" onclick="addToRoutine()"> </input>
+            <input type="button" onclick="addToRoutine()" value="add"> </input>
             <div>
                 <p>
                     <span id="updateNotification">
@@ -135,7 +130,7 @@
                 <div class="modal-body">
                     `<div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <img class="card-img-top" id="poseIMG" src="images/tree_prayer_R.png" alt="Card image cap">
+                            <img class="card-img-top" id="poseIMG" src="resources/images/default.png" alt="Card image cap">
                             <h5 class="card-title" id="cardTitle">Pose</h5>
                             <p class="card-text" id="cardText"> more info </p>
                         </div>
@@ -149,9 +144,10 @@
         </div>
     </div>
 
-    <script src="pose.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <script src="scripts/constants.js"></script>
+    <script src="scripts/pose.js"></script>
+    <script src="scripts/joins.js"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
