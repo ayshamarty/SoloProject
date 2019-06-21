@@ -9,7 +9,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,25 +21,23 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Navigate
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="poseLink" href="pose.html">Pose Manager</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="routineLink" href="routine.html">Routine Manager</a>
-                    </div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="pose.html">Poses <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="routine.html">Routines <span class="sr-only">(current)</span></a>
                 </li>
 
             </ul>
         </div>
     </nav>
-    <h1>Yoga Routines for Software Developing Teens</h1>
+    <div class="top-bar">
+
     <hr>
     <h1>Pose Manager</h1>
     <hr>
+
+    </div>
 
     <div class="container">
         <table id="table" class="table table-striped">
@@ -52,63 +50,56 @@
             </tr>
 
         </table>
+        <hr>
     </div>
-    <hr>
+
     </div>
 
     <form onsubmit="create()" id="createPose">
         <div class="container">
-            <h2>Create a new pose</h2>
-            <input id="createPoseName" type="text" placeholder="pose name">
-            Choose Difficulty:
-            <select id="createPoseDifficulty">
+            <h5>Create a new pose</h5>
+            <input id="createPoseName" type="text" placeholder="pose name" class="rounded">
+            <select id="createPoseDifficulty" class="rounded">
+                <option value="">difficulty</option>
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advance">Advance</option>
             </select>
-            <input id="createPoseInfo" type="text" placeholder="add information">
-            <input id="createPoseIMG" type="text" placeholder="image file">
-            <input type="submit" value="Create pose"> </input>
-            <p id="createNotification"></p>
+            <input id="createPoseInfo" type="text" placeholder="add information" class="rounded">
+            <input id="createPoseIMG" type="text" placeholder="image file" class="rounded">
+            <input type="submit" value="Create pose" class="btn btn-secondary"> </input>
+            <hr>
+        </div>
+    </form>
+
+    <form onsubmit="update()">
+        <div class="container">
+            <h5>Update a pose</h5>
+            <input id="poseIDToChange" type="number" placeholder="poseID" class="rounded" required>
+            <input id="updatePoseName" type="text" placeholder="pose name" class="rounded">
+            <select id="updatePoseDifficulty" class="rounded">
+                <option value="">difficulty</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advance">Advance</option>
+            </select>
+            <input id="updatePoseInfo" type="text" placeholder="add information" class="rounded">
+            <input id="updatePoseIMG" type="text" placeholder="image file" class="rounded">
+            <input type="button" value="Update pose" onclick="update()" class="btn btn-secondary" class="rounded"> </input>
             <hr>
         </div>
     </form>
 
     <form>
         <div class="container">
-            <h2>Update a pose</h2>
-
-            <input id="poseIDToChange" type="number" placeholder="poseID" required>
-            <input id="updatePoseName" type="text" placeholder="pose name">
-            Choose Difficulty:
-            <select id="updatePoseDifficulty">
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advance">Advance</option>
-            </select>
-            <input id="updatePoseInfo" type="text" placeholder="add information">
-            <input id="updatePoseIMG" type="text" placeholder="image file">
-            <input type="button" onclick="update()" value="Update pose"> </input>
+            <h5>Add or remove a pose from a routine</h5>
+            <input id="poseToJoin" type="number" placeholder="pose ID" class="rounded" required>
+            <input id="routineToJoin" type="number" placeholder="routine ID" class="rounded" required>
+            <input type="button" onclick="addToRoutine()" value="add" class="btn btn-secondary"> </input>
+            <input type="button" onclick="removeFromRoutine()" value="remove" class="btn btn-secondary"> </input>
             <div>
                 <p>
-                    <span id="updateNotification">
-                    </span>
-                </p>
-            </div>
-            <hr>
-        </div>
-    </form>
-
-    <form>
-        <div class="container">
-            <h2>Add to routine</h2>
-
-            <input id="poseToAdd" type="number" placeholder="pose ID" required>
-            <input id="routineToAdd" type="number" placeholder="routine ID" required>
-            <input type="button" onclick="addToRoutine()" value="add"> </input>
-            <div>
-                <p>
-                    <span id="updateNotification">
+                    <span id="joinNotify">
                     </span>
                 </p>
             </div>
@@ -130,7 +121,8 @@
                 <div class="modal-body">
                     `<div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <img class="card-img-top" id="poseIMG" src="resources/images/default.png" alt="Card image cap">
+                            <img class="card-img-top" id="poseIMG" src="resources/images/default.png"
+                                alt="Card image cap">
                             <h5 class="card-title" id="cardTitle">Pose</h5>
                             <p class="card-text" id="cardText"> more info </p>
                         </div>
@@ -138,7 +130,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+
                 </div>
             </div>
         </div>
@@ -147,7 +139,7 @@
     <script src="scripts/constants.js"></script>
     <script src="scripts/pose.js"></script>
     <script src="scripts/joins.js"></script>
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

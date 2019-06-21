@@ -72,6 +72,8 @@ public class PoseDatabaseRepository implements PoseRepository {
 		if (poseToUpdate != null) {
 			poseToUpdate.setPoseName(updatedPose.getPoseName());
 			poseToUpdate.setPoseDifficulty(updatedPose.getPoseDifficulty());
+			poseToUpdate.setPoseInfo(updatedPose.getPoseInfo());
+			poseToUpdate.setPoseIMG(updatedPose.getPoseIMG());
 			manager.persist(poseToUpdate);
 			return "{\"message\": \"pose successfully updated\"}";
 		} else {
