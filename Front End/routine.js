@@ -50,9 +50,9 @@ function addToTable(newEntry, aRow) {
     let aRoutineType = document.createElement('td');
     aRoutineType.innerHTML = newEntry.routineType;
     let deleteButton = document.createElement('td');
-    deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.routineID})' > Delete</button >`;
+    deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.routineID})' > Delete</button >`;
     let readOneButton = document.createElement('td');
-    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick ='readOne(${newEntry.routineID})' > More Details </button >`;
+    readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick='showRoutine(${newEntry.routineID})' > More Details </button >`;
 
     aRow.appendChild(aRoutineID);
     aRow.appendChild(aRoutineName);
@@ -106,7 +106,7 @@ const readAll = () => {
 }
 
 
-function readOne(id) {
+function showRoutine(id) {
     makeRequest("GET", `${routineURL}getARoutine/${id}`).then((req) => {
         let routine = JSON.parse(req.responseText);
         console.table(routine);
