@@ -1,8 +1,9 @@
-const routineURL = "http://35.228.110.11:8888/Yoga/api/routine/";
-//"http://localhost:8080/Yoga/api/routine/"
+const routineURL = "http://localhost:8080/Yoga/api/routine/";
+//"/Yoga/api/routine/";
 
-const poseURL = "http://35.228.110.11:8888/Yoga/api/pose/";
-//"http://localhost:8080/Yoga/api/pose/"
+
+const poseURL = "http://localhost:8080/Yoga/api/pose/";
+//"/Yoga/api/pose/";
 
 function makeRequest(requestType, url, whatToSend) {
     return new Promise((resolve, reject) => {

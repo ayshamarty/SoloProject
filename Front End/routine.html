@@ -4,12 +4,12 @@
     <title>Yoga Routines for Software Developing Teens</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+    <nav class="navbar navbar-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,37 +21,27 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Navigate
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="poseLink" href="pose.html">Pose Manager</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="routineLink" href="routine.html">Routine Manager</a>
-                    </div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="pose.html">Poses <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="routine.html">Routines <span class="sr-only">(current)</span></a>
                 </li>
 
             </ul>
         </div>
     </nav>
-    <h1>Yoga Routines for Software Developing Teens</h1>
-    <hr>
-    <h1>Routine Manager</h1>
-    <hr>
+    <div class="top-bar">
+
+        <hr>
+        <h1>Routine Manager</h1>
+        <hr>
+
+    </div>
     <form>
         <div class="container">
-            <h2>Find a routine</h2>
-            Enter ID
-            <input id="routineToFind" type="number" placeholder="routine ID">
-            <input type="button" onclick="readOne(routineToFind.value)" value="Get routine">
-            <div id="routineCards">
-            </div>
-            <div id="readNotification">
 
-
-            </div>
+        </div>
         </div>
     </form>
     <div class="container">
@@ -69,33 +59,49 @@
     <hr>
     </div>
 
-    <form>
-        <div class="container">
-            <h2>Create a new routine</h2>
-            Enter Name
-            <input id="createRoutineName" type="text" placeholder="routine name">
-            Enter Type
-            <input id="createRoutineType" type="text" placeholder="routine type">
-            <input type="button" onclick="create()" value="Create routine"> </input>
+    <form onsubmit="createRoutine()">
+        <div class="container form-group">
+            <h5>Create a new routine</h5>
+            <input id="createRoutineName" type="text" placeholder="routine name" class="rounded">
+            Choose Difficulty:
+            <input id="createRoutineType" type="text" placeholder="routine type" class="rounded">
+            <input type="submit" value="Create routine" class="btn btn-secondary"> </input>
             <p id="createNotification"></p>
             <hr>
         </div>
     </form>
 
-    <form onsubmit="update()">
+    <form onsubmit="updateRoutine()">
         <div class="container">
-            <h2>Update a routine</h2>
-
+            <h5>Update a routine</h5>
             Enter ID
-            <input id="routineIDToChange" type="number" placeholder="routine ID" required>
+            <input id="routineIDToChange" type="number" placeholder="routine ID" class="rounded" required>
             Enter Name
-            <input id="updateRoutineName" type="text" placeholder="routine name">
+            <input id="updateRoutineName" type="text" placeholder="routine name" class="rounded">
             Enter Type
-            <input id="updateRoutineType" type="text" placeholder="routine type">
-            <input type="submit" value="Update routine"> </input>
+            <input id="updateRoutineType" type="text" placeholder="routine type" class="rounded">
+            <input type="submit" value="Update routine" class="btn btn-secondary"> </input>
             <div>
                 <p>
                     <span id="updateNotification">
+                    </span>
+                </p>
+            </div>
+            <hr>
+        </div>
+    </form>
+
+    <form>
+        <div class="container">
+            <h5>Add or remove a pose from a routine</h5>
+            <input id="poseToJoin" type="number" placeholder="pose ID" class="rounded" required>
+            <input id="routineToJoin" type="number" placeholder="routine ID" class="rounded" required>
+            <input type="button" onclick="addToRoutine()" value="add" class="btn btn-secondary"> </input>
+            <input type="button" onclick="removeFromRoutine()" value="remove" class="btn btn-secondary"> </input>
+            <hr>
+            <div>
+                <p>
+                    <span id="joinNotify">
                     </span>
                 </p>
             </div>
@@ -130,7 +136,6 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -138,6 +143,7 @@
 
     <script src="scripts/constants.js"></script>
     <script src="scripts/routine.js"></script>
+    <script src="scripts/joins.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

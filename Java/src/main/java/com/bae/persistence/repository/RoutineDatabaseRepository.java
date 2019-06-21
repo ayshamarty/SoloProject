@@ -97,10 +97,10 @@ public class RoutineDatabaseRepository implements RoutineRepository {
 		for (Pose pose : routineToDepopulate.getPoseSet()) {
 			if (pose.getPoseID() == poseID) {
 				routineToDepopulate.getPoseSet().remove(pose);
-				break;
 			}
 		}
 		return "{\"message\": \"pose successfully removed from routine\"}";
+
 	}
 
 	// Getters and setters

@@ -1,5 +1,8 @@
 body {
-    background-color: rgb(215, 216, 255);
+    background-color: rgb(255, 212, 163);
+}
+.top-bar {
+    background-color: bisque;
 }
 
   h1 {
@@ -26,4 +29,22 @@ body {
 .modalHeader{
     font-size: 30;
     text-align: center;
+}
+
+.navbar {
+    position: fixed;
+    background-color: rgb(209, 157, 60);
+    border-bottom-right-radius:  25px;
+}
+
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.round-corner {
+    border-radius: 5px;
 }

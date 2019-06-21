@@ -31,7 +31,7 @@ function addToTable(newEntry, aRow) {
     let aPoseDifficulty = document.createElement('td');
     aPoseDifficulty.innerHTML = newEntry.poseDifficulty;
     let deleteButton = document.createElement('td');
-    deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick ='destroy(${newEntry.poseID})' > Delete</button >`;
+    deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.poseID})' > Delete</button >`;
     let readOneButton = document.createElement('td');
     readOneButton.innerHTML = `<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" onclick ='readOne(${newEntry.poseID})' > More Details </button >`;
 
@@ -97,34 +97,40 @@ function destroy(id) {
     });
 }
 
-//create
+//constructor
 function poseMaker(pName, pDifficulty, pInfo, pIMG) {
     const pose = {
         poseName: pName.value,
         poseDifficulty: pDifficulty.value,
         poseInfo: pInfo.value,
-        pIMG: pIMG.value,
+        poseIMG: pIMG.value,
     };
     return pose;
 }
 
+
+//create
 function create() {
     let pose = poseMaker(createPoseName, createPoseDifficulty, createPoseInfo, createPoseIMG);
+    console.log(pose);
     makeRequest("POST", `${poseURL}createPose`, JSON.stringify(pose)).then(() => {
     }).catch((error) => { console.log(error.message) }).then(readAll());
 }
 
+//update
 function update() {
     let pose = poseMaker(updatePoseName, updatePoseDifficulty, updatePoseInfo, updatePoseIMG);
+    console.log(pose);
     let id = poseIDToChange.value
     makeRequest("PUT", `${poseURL}updatePose/${id}`, JSON.stringify(pose)).then(() => {
-    }).catch((error) => { console.log(error.message) }).then(() => readAll());
-}
 
-function addToRoutine () {
-    makeRequest("POST", `${routineURL}addToRoutine/${routineToAdd.value}/${poseToAdd.value}`).then(() => {
-        readAll();
-    }).catch((error) => { console.log(error.message) });
+console.log(id)
+console.log(pose)
+console.log(poseURL)
+
+
+
+    }).catch((error) => { console.log(error.message) }).then(() => readAll());
 }
 
 

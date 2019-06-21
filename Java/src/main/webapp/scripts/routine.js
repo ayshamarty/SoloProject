@@ -88,6 +88,7 @@ const readAll = () => {
             console.table(data[0].routineName);
 
             const tableContainer = document.getElementById('mainTable');
+            tableContainer.className = "table table-hover";
 
             // creating table rows and adding data into the rows
             for (let i = 0; i < data.length; i++) {
@@ -173,14 +174,15 @@ function routineMaker(rName, rType) {
     return routine;
 }
 
-function create() {
-    let routine = routineMaker(createRoutineName, createRoutineType);
-    makeRequest("POST", `${routineURL}createRoutine`, JSON.stringify(routine)).then(() => {
+function createRoutine() {
+    let routineToCreate = routineMaker(createRoutineName, createRoutineType);
+    console.log(routineToCreate);
+    makeRequest("POST", `${routineURL}createRoutine`, JSON.stringify(routineToCreate)).then(() => {
         console.table(JSON.stringify(routine));
     }).catch((error) => { console.log(error.message) }).then(readAll());
 }
 
-function update() {
+function updateRoutine() {
     let routineToUpdate = routineMaker(updateRoutineName, updateRoutineType);
     let id = routineIDToChange.value
 
