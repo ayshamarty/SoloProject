@@ -35,6 +35,16 @@ public class Routine {
 		this.routineName = routineName;
 		this.routineType = routineType;
 	}
+	
+	
+
+	public Routine(int routineID, String routineName, String routineType, Set<Pose> poseSet) {
+		super();
+		this.routineID = routineID;
+		this.routineName = routineName;
+		this.routineType = routineType;
+		this.poseSet = poseSet;
+	}
 
 	public int getRoutineID() {
 		return routineID;

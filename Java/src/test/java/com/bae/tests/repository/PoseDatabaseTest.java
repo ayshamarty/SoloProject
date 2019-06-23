@@ -72,13 +72,13 @@ public class PoseDatabaseTest {
 	@Test
 	public void testCreatePose() {
 		String reply = repo.createPose(testPose1Str);
-		Assert.assertEquals(reply, "{\"message\": \"pose successfully added\"}");
+		Assert.assertEquals("{\"message\": \"pose successfully added\"}", reply);
 	}
 
 	@Test
 	public void testDeletePoseDoesNotExist() {
 		String reply = repo.deletePose(1);
-		Assert.assertEquals(reply, failedMessage);
+		Assert.assertEquals(failedMessage, reply);
 	}
 
 	@Test
@@ -88,14 +88,14 @@ public class PoseDatabaseTest {
 		Mockito.when(manager.find(Pose.class, 1)).thenReturn(tempPose);
 		Mockito.when(manager.contains(tempPose)).thenReturn(true);
 		String reply = repo.deletePose(1);
-		Assert.assertEquals(reply, "{\"message\": \"pose successfully deleted\"}");
+		Assert.assertEquals("{\"message\": \"pose successfully deleted\"}", reply);
 	}
 
 	@Test
 	public void testUpdatePoseDoesntExist() {
 
 		String reply = repo.updatePose(1, testPoseUpdateStr);
-		Assert.assertEquals(reply, failedMessage);
+		Assert.assertEquals(failedMessage, reply);
 
 	}
 
@@ -104,7 +104,7 @@ public class PoseDatabaseTest {
 
 		Mockito.when(manager.find(Pose.class, 1)).thenReturn(testPose1);
 		String reply = repo.updatePose(1, testPoseUpdateStr);
-		Assert.assertEquals(reply, "{\"message\": \"pose successfully updated\"}");
+		Assert.assertEquals("{\"message\": \"pose successfully updated\"}", reply);
 	}
 
 }
