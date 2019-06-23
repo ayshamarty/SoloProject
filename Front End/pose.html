@@ -9,33 +9,12 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Menu</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="pose.html">Poses <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="routine.html">Routines <span class="sr-only">(current)</span></a>
-                </li>
-
-            </ul>
-        </div>
-    </nav>
+    <div id="sharedNav"></div>
     <div class="top-bar">
 
-    <hr>
-    <h1>Pose Manager</h1>
-    <hr>
+        <hr>
+        <h1>Pose Manager</h1>
+        <hr>
 
     </div>
 
@@ -86,7 +65,8 @@
             </select>
             <input id="updatePoseInfo" type="text" placeholder="add information" class="rounded">
             <input id="updatePoseIMG" type="text" placeholder="image file" class="rounded">
-            <input type="button" value="Update pose" onclick="update()" class="btn btn-secondary" class="rounded"> </input>
+            <input type="button" value="Update pose" onclick="update()" class="btn btn-secondary" class="rounded">
+            </input>
             <hr>
         </div>
     </form>
@@ -140,6 +120,7 @@
     <script src="scripts/constants.js"></script>
     <script src="scripts/pose.js"></script>
     <script src="scripts/joins.js"></script>
+    <script src="scripts/navbar.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
