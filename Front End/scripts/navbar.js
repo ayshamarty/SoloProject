@@ -24,8 +24,5 @@ function makeNavbar() {
     </nav>`
 }
 
-<<<<<<< HEAD
-=======
 makeNavbar();
 
->>>>>>> 46dc4e3891aa4af6bc96119cf7fd13f21ab1163b
