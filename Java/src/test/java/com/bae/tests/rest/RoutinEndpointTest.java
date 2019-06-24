@@ -10,16 +10,16 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.business.RoutineService;
-import com.bae.rest.RoutineController;
+import com.bae.rest.RoutineEndpoint;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RoutineControllerTest {
+public class RoutinEndpointTest {
 
 	private String mockValue;
 	private String mockValue2;
 
 	@InjectMocks
-	private RoutineController controller;
+	private RoutineEndpoint controller;
 	// Class under test
 
 	@Mock

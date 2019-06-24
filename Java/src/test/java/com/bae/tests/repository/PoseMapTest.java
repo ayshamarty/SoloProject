@@ -52,15 +52,15 @@ public class PoseMapTest {
 
 	@Test
 	public void createPoseTest() {
-		assertEquals(poseMapRepo.createPose(PoseMapTestConstants.TESTPOSE1STR), PoseMapTestConstants.SUCCESSMESSAGE);
+		assertEquals(PoseMapTestConstants.SUCCESSMESSAGE, poseMapRepo.createPose(PoseMapTestConstants.TESTPOSE1STR));
 		assertEquals(1, poseMapRepo.getPoseMap().size());
 
 	}
 
 	@Test
 	public void createTwoPosesTest() {
-		assertEquals(poseMapRepo.createPose(PoseMapTestConstants.TESTPOSE1STR), PoseMapTestConstants.SUCCESSMESSAGE);
-		assertEquals(poseMapRepo.createPose(PoseMapTestConstants.TESTPOSE2STR), PoseMapTestConstants.SUCCESSMESSAGE);
+		assertEquals(PoseMapTestConstants.SUCCESSMESSAGE, poseMapRepo.createPose(PoseMapTestConstants.TESTPOSE1STR));
+		assertEquals(PoseMapTestConstants.SUCCESSMESSAGE, poseMapRepo.createPose(PoseMapTestConstants.TESTPOSE2STR));
 		assertEquals(2, poseMapRepo.getPoseMap().size());
 
 	}

@@ -23,12 +23,13 @@ public class RoutineMapTests {
 
 	}
 
+
 	@Test
 	public void getAllRoutines1RoutineTest() {
 		routineMapRepo.getRoutineMap().put(1, RoutineMapTestConstants.TESTROUTINE1);
 		assertEquals("{\"1\":" + RoutineMapTestConstants.TESTROUTINE1STR + "}", routineMapRepo.getAllRoutines());
-
 	}
+
 
 	@Test
 	public void getAllRoutines2RoutinesTest() {
@@ -37,6 +38,8 @@ public class RoutineMapTests {
 		assertEquals("{\"1\":" + RoutineMapTestConstants.TESTROUTINE1STR + ",\"2\":"
 				+ RoutineMapTestConstants.TESTROUTINE2STR + "}", routineMapRepo.getAllRoutines());
 	}
+	
+
 
 	@Test
 	public void getRoutineTest() {
@@ -52,15 +55,15 @@ public class RoutineMapTests {
 
 	@Test
 	public void createRoutineTest() {
-		assertEquals(routineMapRepo.createRoutine(RoutineMapTestConstants.TESTROUTINE1STR), Constants.SUCCESSMESSAGE);
+		assertEquals(Constants.SUCCESSMESSAGE, routineMapRepo.createRoutine(RoutineMapTestConstants.TESTROUTINE1STR));
 		assertEquals(1, routineMapRepo.getRoutineMap().size());
 
 	}
 
 	@Test
 	public void createTwoRoutinesTest() {
-		assertEquals(routineMapRepo.createRoutine(RoutineMapTestConstants.TESTROUTINE1STR), Constants.SUCCESSMESSAGE);
-		assertEquals(routineMapRepo.createRoutine(RoutineMapTestConstants.TESTROUTINE2STR), Constants.SUCCESSMESSAGE);
+		assertEquals(Constants.SUCCESSMESSAGE, routineMapRepo.createRoutine(RoutineMapTestConstants.TESTROUTINE1STR));
+		assertEquals(Constants.SUCCESSMESSAGE, routineMapRepo.createRoutine(RoutineMapTestConstants.TESTROUTINE2STR));
 		assertEquals(2, routineMapRepo.getRoutineMap().size());
 
 	}
