@@ -20,7 +20,7 @@ The many to many relationship between poses and routines is working, where poses
 Test coverage for the backend is at 84%, there are as of yet no working Selenium tests but hope to get these running soon.
 The SonarQube static report shows 9 code smells remaining, 0 bugs, 0 duplications and 0 vulnerabilities.
 
-### Improvements for the future
+## Improvements for the future
 
 Currently, IDs are required to update poses and routines, and to add or remove poses from routines. In my next sprint, I would like to create buttons in the front end which allow this functionality without the need for IDs, which would allow the object IDs to be hidden from the user.
 
@@ -32,15 +32,15 @@ This application can be deployed both locally and externally through a virtual m
 
 ## Technologies Used
 
-* H2 Database Dngine - Database
+* H2 Database Engine - Database
 * Java - Logic
 * Wildfly - Deployment
 * Jenkins - CI Server
 * Maven - Dependency Management
 * Jacoco, EclEmma, Surefire - Test Reporting
 * SonarQube - Static Testing
-* Git[https://github.com/ayshamarty/SoloProject.git] - VCS
-* Trello[https://trello.com/qasoloproject] - Project Tracking
+* [Git](https://github.com/ayshamarty/SoloProject.git) - VCS
+* [Trello](https://trello.com/qasoloproject) - Project Tracking
 * GCP - Live Environment
 
 
