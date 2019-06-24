@@ -3,7 +3,6 @@ package com.bae.tests.repository;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.bae.persistence.repository.RoutineMapRepository;
