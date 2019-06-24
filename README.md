@@ -15,7 +15,7 @@ The many to many relationship between poses and routines is working, where poses
 
 ## Testing
 
-### Report
+JUnit, Mockito and Selenium tests have been used for automated testing, and SonarLint/SonarQube for static reporting and refactoring.### Report
 
 Test coverage for the backend is at 84%, there are as of yet no working Selenium tests but hope to get these running soon.
 The SonarQube static report shows 9 code smells remaining, 0 bugs, 0 duplications and 0 vulnerabilities.
