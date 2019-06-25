@@ -12,7 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class FrontEndTest {
-	private WebDriver driver;
+
+	public static WebDriver driver;
 
 	@Before
 	public void setup() {
@@ -31,7 +32,9 @@ public class FrontEndTest {
 	public void testMoreDetails() {
 		driver.manage().window().maximize();
 		driver.get("http://35.228.110.11:8888/Yoga/index.html");
-		WebElement goToPoses = driver.findElement(By.xpath("//*[@id=\"sharedNav\"]/nav/button/span"));
+
+		WebElement goToPoses = driver.findElement(By.xpath("//*[@id=\"sharedNav\"]/nav/button/span"));	
+
 		goToPoses.click();
 		goToPoses = driver.findElement(By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[2]/a"));
 		goToPoses.click();

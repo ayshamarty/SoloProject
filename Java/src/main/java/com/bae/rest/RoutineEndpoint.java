@@ -12,7 +12,7 @@ import javax.ws.rs.Produces;
 import com.bae.business.RoutineService;
 
 @Path("routine")
-public class RoutineController {
+public class RoutineEndpoint {
 
 	@Inject
 	RoutineService service;

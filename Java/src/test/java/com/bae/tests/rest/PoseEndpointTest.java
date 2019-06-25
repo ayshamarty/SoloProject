@@ -10,16 +10,16 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bae.business.PoseService;
-import com.bae.rest.PoseController;
+import com.bae.rest.PoseEndpoint;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PoseControllerTest {
+public class PoseEndpointTest {
 
 	private String mockValue;
 	private String mockValue2;
 
 	@InjectMocks
-	private PoseController controller;
+	private PoseEndpoint controller;
 	// Class under test
 
 	@Mock

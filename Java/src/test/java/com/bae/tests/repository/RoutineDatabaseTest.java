@@ -75,13 +75,13 @@ public class RoutineDatabaseTest {
 	@Test
 	public void testCreateRoutine() {
 		String reply = repo.createRoutine(testRoutineUpdateStr);
-		Assert.assertEquals(reply, "{\"message\": \"routine successfully added\"}");
+		Assert.assertEquals("{\"message\": \"routine successfully added\"}", reply);
 	}
 
 	@Test
 	public void testDeleteRoutineDoesNotExist() {
 		String reply = repo.deleteRoutine(1);
-		Assert.assertEquals(reply, failedMessage);
+		Assert.assertEquals(failedMessage, reply);
 	}
 
 	@Test
@@ -91,14 +91,14 @@ public class RoutineDatabaseTest {
 		Mockito.when(manager.find(Routine.class, 1)).thenReturn(tempRoutine);
 		Mockito.when(manager.contains(tempRoutine)).thenReturn(true);
 		String reply = repo.deleteRoutine(1);
-		Assert.assertEquals(reply, "{\"message\": \"routine successfully deleted\"}");
+		Assert.assertEquals("{\"message\": \"routine successfully deleted\"}", reply);
 	}
 
 	@Test
 	public void testUpdateRoutineDoesntExist() {
 
 		String reply = repo.updateRoutine(1, testRoutineUpdateStr);
-		Assert.assertEquals(reply, failedMessage);
+		Assert.assertEquals(failedMessage, reply);
 
 	}
 
@@ -107,21 +107,21 @@ public class RoutineDatabaseTest {
 
 		Mockito.when(manager.find(Routine.class, 1)).thenReturn(testRoutine1);
 		String reply = repo.updateRoutine(1, testRoutineUpdateStr);
-		Assert.assertEquals(reply, "{\"message\": \"routine successfully updated\"}");
+		Assert.assertEquals("{\"message\": \"routine successfully updated\"}", reply);
 	}
 
 	@Test
 	public void testAddToRoutine() {
 		Mockito.when(manager.find(Routine.class, 1)).thenReturn(testRoutine1);
 		String reply = repo.addToRoutine(1, 1);
-		Assert.assertEquals(reply, "{\"message\": \"pose successfully added to routine\"}");
+		Assert.assertEquals("{\"message\": \"pose successfully added to routine\"}", reply);
 	}
 
 	@Test
 	public void testDeleteFromRoutine() {
 		Mockito.when(manager.find(Routine.class, 1)).thenReturn(testRoutine1);
 		String reply = repo.removeFromRoutine(1, 1);
-		Assert.assertEquals(reply, "{\"message\": \"pose successfully removed from routine\"}");
+		Assert.assertEquals("{\"message\": \"pose successfully removed from routine\"}", reply);
 	}
 
 }
