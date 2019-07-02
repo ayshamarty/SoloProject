@@ -3,20 +3,21 @@
 In fulfilment of the solo project assignment due Monday week 7 at QA consulting.
 
 ## Index
-[Brief](##-The-Brief)
-	* [Solution] (###-Solution)
-[Testing](##-Testing)
-   * [Report] (###-Report)
+[Brief](##The-Brief)
+	* [Solution](###Solution)
+	
+[Testing](##Testing)
+   * [Report](###Report)
      
-[Improvements for the Future](##-Improvements-for-the-Future)
+[Improvements for the Future](##Improvements-for-the-Future)
      
-[Deployment](##-Deployment)
+[Deployment](##Deployment)
      
-[Technologies Used] (##-Technologies-Used)
+[Technologies Used](Technologies-Used)
 
-[Authors] (##-Authors)
+[Authors](##Authors)
 
-[Acknowledgements] (##-Acknowledgements)
+[Acknowledgements](##Acknowledgements)
 
 
 ## The Brief
