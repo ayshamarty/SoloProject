@@ -43,7 +43,7 @@ The many to many relationship between poses and routines is working, where poses
 #### Final Version
 <a name="mla"></a>
 ### Multi Tier Architecture Diagram
-![MTA][documentation/MTA.jpg]
+![MTA](/documentation/MTA.jpg)
 
 
 <a name="testing"></a>
