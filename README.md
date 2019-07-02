@@ -4,18 +4,18 @@ In fulfilment of the solo project assignment due Monday week 7 at QA consulting.
 
 ## Index
 [Brief](#brief)
-	* [Solution](#solution)
+	* [Solution](###solution)
 	
-[Testing](#testing)
+[Testing](##testing)
    * [Report](#report)
      
-[Improvements for the Future](#improve)
+[Improvements for the Future](##improve)
      
-[Deployment](#depl)
+[Deployment](##depl)
      
-[Technologies Used](#tech)
+[Technologies Used](##tech)
 
-[Authors](#auth)
+[Authors](##auth)
 
 [Acknowledgements](#ack)
 
