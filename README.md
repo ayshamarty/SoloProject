@@ -4,7 +4,7 @@ In fulfilment of the solo project assignment due Monday week 7 at QA consulting.
 
 ## Index
 [Brief](#brief)
-	* [Solution](#solution)
+   * [Solution](#solution)
 	
 [Testing](#testing)
    * [Report](#report)
