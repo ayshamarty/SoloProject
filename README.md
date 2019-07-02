@@ -5,11 +5,10 @@ In fulfilment of the solo project assignment due Monday week 7 at QA consulting.
 ## Index
 [Brief](#brief)
    * [Solution](#solution)
-<<<<<<< HEAD
-=======
    
 [Architecture](#architecture)
->>>>>>> 9114803bdd72e832dfba8da9fbb7cab515a0918a
+   * [Entity Relationship Diagrams](#erd)
+   * [Multi Tier Architechture Diagram](#mla)
 	
 [Testing](#testing)
    * [Report](#report)
@@ -38,7 +37,14 @@ The many to many relationship between poses and routines is working, where poses
 
 <a name="architecture"></a>
 ## Architecture
-![Multi Tier Architecture](/Documentation/Multi Tier Architecture.jpg)
+<a name="erd"></a>
+### Entity Relationship Diagrams
+#### Initial plan
+#### Final Version
+<a name="mla"></a>
+### Multi Tier Architecture Diagram
+![MTA][documentation/MTA.jpg]
+
 
 <a name="testing"></a>
 ## Testing
