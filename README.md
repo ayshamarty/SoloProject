@@ -5,6 +5,11 @@ In fulfilment of the solo project assignment due Monday week 7 at QA consulting.
 ## Index
 [Brief](#brief)
    * [Solution](#solution)
+<<<<<<< HEAD
+=======
+   
+[Architecture](#architecture)
+>>>>>>> 9114803bdd72e832dfba8da9fbb7cab515a0918a
 	
 [Testing](#testing)
    * [Report](#report)
@@ -30,6 +35,10 @@ To create an OOP-based application with utilisation of supporting tools, methodo
 I decided to create a personal yoga application that would allow the user to create poses and routines, as well as add and remove poses from each routine.
 
 The many to many relationship between poses and routines is working, where poses can be added and removed from routines.
+
+<a name="architecture"></a>
+## Architecture
+![Multi Tier Architecture](/Documentation/Multi Tier Architecture.jpg)
 
 <a name="testing"></a>
 ## Testing
