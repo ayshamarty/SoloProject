@@ -41,20 +41,26 @@ The many to many relationship between poses and routines is working, where poses
 ### Entity Relationship Diagrams
 #### Initial plan
 ![Initial ERD](/Documentation/ERD_Initial_Plan.jpg)
-The initial plan for the ERD had a lot more tables and entities. The tables are coloured based on how I hoped to prioritise the features in the application, and therefor the order in which I would tackle them. Given the time constraints, I only managed to deliver two tables plus a join, as depicted below
+
+The initial plan for the ERD consisted of a lot more tables and entities than were produced in the final application. The tables are coloured based on how I had hoped to prioritise the features of the application, and therefore the order in which I would tackle them. Given the time constraints, I only managed to deliver two tables plus a join, as depicted below
+
 #### Delivered solution
 ![Final ERD](/Documentation/ERD_Final.jpg)
-As shown in the final ERD
+
+As shown in this ERD, I ended up changing the focus of the initial tables. After building the first entity (poses), I concluded it made more sense to continue making a routine table first, encompassing a many-to-many relationship between the two. My reasoning was that it would make for a more interesting user experience to create routines from the poses, rather than arbitrarily add health benefits to each pose.
 
 <a name="mla"></a>
 ### Multi Tier Architecture Diagram
 Please click on the diagram for a high resolution version:
 ![MTA](/Documentation/MTA.jpg)
 
+This is a very high-level architecture diagram to demonstrate the architecture of the application. It does not include getters and setters, test classes, or constants classes. 
+
 
 <a name="testing"></a>
 ## Testing
 
+![MTA](/Documentation/MTA.jpg)
 JUnit, Mockito and Selenium tests have been used for automated testing, and SonarLint/SonarQube for static reporting and refactoring.
 
 <a name="report"></a>
