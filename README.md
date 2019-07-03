@@ -40,9 +40,15 @@ The many to many relationship between poses and routines is working, where poses
 <a name="erd"></a>
 ### Entity Relationship Diagrams
 #### Initial plan
-#### Final Version
+![Initial ERD](/Documentation/ERD_Initial_Plan.jpg)
+The initial plan for the ERD had a lot more tables and entities. The tables are coloured based on how I hoped to prioritise the features in the application, and therefor the order in which I would tackle them. Given the time constraints, I only managed to deliver two tables plus a join, as depicted below
+#### Delivered solution
+![Final ERD](/Documentation/ERD_Final.jpg)
+As shown in the final ERD
+
 <a name="mla"></a>
 ### Multi Tier Architecture Diagram
+Please click on the diagram for a high resolution version:
 ![MTA](/Documentation/MTA.jpg)
 
 
@@ -110,6 +116,7 @@ The many to many relationship between poses and routines is working, where poses
 ## Testing
 
 JUnit, Mockito and Selenium tests have been used for automated testing, and SonarLint/SonarQube for static reporting and refactoring.
+
 ### Report
 
 Test coverage for the backend is at 84%, there are as of yet no working Selenium tests but hope to get these running soon.
