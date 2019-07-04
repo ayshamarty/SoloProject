@@ -60,11 +60,12 @@ This is a very high-level architecture diagram to demonstrate the architecture o
 <a name="testing"></a>
 ## Testing
 
-![MTA](/Documentation/MTA.jpg)
 JUnit, Mockito and Selenium tests have been used for automated testing, and SonarLint/SonarQube for static reporting and refactoring.
 
 <a name="report"></a>
 ### Report
+
+[Link to Final Surefire Report](/Documentation/Surefire_Report.pdf)
 
 Test coverage for the backend is at 84%, there are as of yet no working Selenium tests but hope to get these running soon.
 The SonarQube static report shows 9 code smells remaining, 0 bugs, 0 duplications and 0 vulnerabilities.
