@@ -18,6 +18,8 @@ In fulfilment of the solo project assignment due Monday week 7 at QA consulting.
    * [Technologies Used](#tech)
      
 [Front End Design](#FE)
+   * [Wireframes](#WF)
+   * [Final Design](#FD)
 
 [Improvements for the Future](#improve)
 
@@ -97,13 +99,11 @@ This application can be deployed both locally and externally through a virtual m
 <a name="FE"></a>
 ## Front End Design
 ### Wireframes
-Poses
-![Poses Wireframe](/Documentation/Poses_Wireframe.png)
-Routines
-![Routines Wireframe](/Documentation/Routines_Wireframe.png)
-### Final Appearance
-![Pose HTML](/Documentation/Pose_HTML.jpg)
+<a name="WF"></a>
+![Wireframes](/Documentation/wireframes.png)
 
+<a name="FD"></a>
+### Final Appearance
 ![Modal Box](/Documentation/Pose_HTML_Modal.jpg)
 
 <a name="improve"></a>
