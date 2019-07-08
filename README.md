@@ -102,6 +102,9 @@ Poses
 Routines
 ![Routines Wireframe](/Documentation/Routines_Wireframe.png)
 ### Final Appearance
+![Pose HTML](/Documentation/Pose_HTML.jpg)
+
+![Modal Box](/Documentation/Pose_HTML_Modal.jpg)
 
 <a name="improve"></a>
 ## Improvements for the Future
