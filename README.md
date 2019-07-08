@@ -80,7 +80,6 @@ The build, test and deployment process was automated using Jenkins, with a webho
 This application can be deployed both locally and externally through a virtual machine. The constants.js file has commented out options to switch from an external to local IP address.
 
 ![Deployment Pipeline](/Documentation/CI_pipeline.jpg)
-
 <a name="tech"></a>
 ### Technologies Used
 
@@ -97,6 +96,12 @@ This application can be deployed both locally and externally through a virtual m
 
 <a name="FE"></a>
 ## Front End Design
+### Wireframes
+Poses
+![Poses Wireframe](/Documentation/Poses_Wireframe.png)
+Routines
+![Routines Wireframe](/Documentation/Routines_Wireframe.png)
+### Final Appearance
 
 <a name="improve"></a>
 ## Improvements for the Future
@@ -109,7 +114,6 @@ In later sprints, I would also like create a health-benefit entity which would h
 ## Authors
 
 Aysha Marty
-
 
 <a name="ack"></a>
 ## Acknowledgements
