@@ -100,11 +100,18 @@ This application can be deployed both locally and externally through a virtual m
 ## Front End Design
 ### Wireframes
 <a name="WF"></a>
+Here are the basic wireframes which I used to plan the design of my main html pages:
 ![Wireframes](/Documentation/wireframes.png)
+Both the routine and pose entities would be displayed as a table, with buttons allowing the user to perform full CRUD operations on both entities, as well as the ability to make use of the many-to-many relationship by adding and removing poses from routines that the user has created
 
 <a name="FD"></a>
 ### Final Appearance
-![Modal Box](/Documentation/Pose_HTML_Modal.jpg)
+![Pose HTML](/Documentation/Pose_HTML.jpg)
+In future versions, I would like the Create and Update features to be included within the table, with a button which would trigger a modal form (more details on the modal features below the next image) to be completed by the user. The update button's form would be further adapted so that the form would be prepopulated with the object's current information, so the user would not have to re-enter all the information when only wanting to change one entry. This would create a less cluttered interface and an enhanced UX.
+
+![Pose Modal Box](/Documentation/Pose_HTML_Modal.jpg)
+To demonstrate the modal box feature, this screenshot shows what is displayed when the 'more details' button is clicked for one of the poses. There is an image illustrating how the pose should look, alongside further information about the pose.
+There is currently a similar feature on the routines.html page, where the modal box displays a table with all the poses included in the selected routine.
 
 <a name="improve"></a>
 ## Improvements for the Future
