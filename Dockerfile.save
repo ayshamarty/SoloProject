@@ -1,0 +1,34 @@
+FROM maven as build
+WORKDIR /build
+COPY . .
+
+<!DOCTYPE html>ing Boot Server</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Java Spring Boot Server</title>
+</head>
+<body>
+Hello from Docker
+</body>
+</html>
+<!DOCTYPE html>ing Boot Server</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Java Spring Boot Server</title>
+</head>
+<body>
+Hello from Docker
+</body>
+</html>
+<!DOCTYPE html>ing Boot Server</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Java Spring Boot Server</title>
+</head>
+<body>
+Hello from Docker
+</body>
+</html>

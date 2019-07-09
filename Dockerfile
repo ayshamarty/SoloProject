@@ -1,16 +1,26 @@
-FROM ubuntu
+FROM maven as build
+WORKDIR /build
 COPY . .
-RUN apt-get update
-RUN apt-get install maven wget unzip -y
-
 RUN mvn -f Java/ clean package
+FROM jboss/wildfly
+COPY --from=build /build/Java/target/Yoga.war /opt/jboss/wildfly/standalone/deployments/
 
-RUN wget "https://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.zip"
-RUN unzip wildfly-10.1.0.Final.zip
-RUN rm wildfly-10.1.0.Final/standalone/configuration/standalone.xml
 
-COPY standalone.xml wildfly-10.1.0.Final/standalone/configuration/
-EXPOSE 8888
+#longer version only using one container
+#FROM ubuntu
+#COPY . .
+#RUN apt-get update
+#RUN apt-get install maven wget unzip -y
 
-RUN cp /Java/target/Yoga.war /wildfly-10.1.0.Final/standalone/deployments/
-CMD ["sh", "wildfly-10.1.0.Final/bin/standalone.sh"]
+#RUN mvn -f Java/ clean package
+
+#RUN wget "https://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.zip"
+#RUN unzip wildfly-10.1.0.Final.zip
+#RUN rm wildfly-10.1.0.Final/standalone/configuration/standalone.xml
+
+#COPY standalone.xml wildfly-10.1.0.Final/standalone/configuration/
+#EXPOSE 8888
+
+#RUN cp /Java/target/Yoga.war /wildfly-10.1.0.Final/standalone/deployments/
+#CMD ["sh", "wildfly-10.1.0.Final/bin/standalone.sh"]
+
