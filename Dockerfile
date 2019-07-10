@@ -6,7 +6,7 @@ FROM jboss/wildfly
 COPY --from=build /build/Java/target/Yoga.war /opt/jboss/wildfly/standalone/deployments/
 
 
-#longer version only using one container
+#longer version only using one image. Make sure you publish port 8888 rather than 8080
 #FROM ubuntu
 #COPY . .
 #RUN apt-get update
